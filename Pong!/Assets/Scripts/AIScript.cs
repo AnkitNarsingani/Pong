@@ -43,9 +43,12 @@ public class AIScript : MonoBehaviour
             }
             else if (!GameManager.Instance.goingUp)
             {
-                canMove = false;
-                transform.position = new Vector3(Mathf.Lerp(transform.position.x, transform.position.x, 0), transform.position.y, transform.position.z);
+                canMove = false; 
             }
+        }
+        else
+        {
+            Debug.Log("Cannot find ball --> AI");
         }
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 class GameManager : MonoBehaviour
@@ -12,6 +13,8 @@ class GameManager : MonoBehaviour
     public GameObject player, AI;
 
     [SerializeField]
+    GameObject circle;
+
     GameObject ball;
 
     [HideInInspector]
@@ -22,6 +25,9 @@ class GameManager : MonoBehaviour
 
     int playerScore = 0;
     int aiScore = 0;
+
+    [SerializeField]
+    Text AIText, playerText;
 
     [SerializeField]
     int winScore = 5;
@@ -43,20 +49,21 @@ class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        UpdateScore();
+        Reference();
     }
 
     void Update()
     {
-
+        
     }
 
-    public void Reference()
+    void Reference()
     {
         player = GameObject.FindWithTag("Player");
         AI = GameObject.FindWithTag("AI");
-        ball = GameObject.FindWithTag("Ball");
-        AI.GetComponent<AIScript>().ball = this.ball;
+        ball = Instantiate(circle, transform.position, Quaternion.identity) as GameObject;
+        AI.GetComponent<AIScript>().ball = ball;
     }
 
     public Color GenerateRandomColor()
@@ -77,9 +84,8 @@ class GameManager : MonoBehaviour
 
     public void GameLose()
     {
-        Time.timeScale = 0;
         rally = 0;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Reference();
     }
 
     public void GameWin(string winner)
@@ -87,6 +93,7 @@ class GameManager : MonoBehaviour
         if (winner.Equals("AI"))
         {
             aiScore++;
+            UpdateScore();
             if (aiScore >= winScore)
             {
                 Debug.Log("AI Wins");
@@ -99,6 +106,7 @@ class GameManager : MonoBehaviour
         else if (winner.Equals("Player"))
         {
             playerScore++;
+            UpdateScore();
             if (playerScore >= winScore)
             {
                 Debug.Log("Player Wins");
@@ -109,5 +117,11 @@ class GameManager : MonoBehaviour
             }
         }
 
+    }
+
+    void UpdateScore()
+    {
+        AIText.text = aiScore.ToString();
+        playerText.text = playerScore.ToString();
     }
 }

@@ -17,7 +17,6 @@ public class BallScript : MonoBehaviour
     }
     void Start()
     {
-        GameManager.Instance.Reference();
         UpdateColor();
 
         force.x = Random.Range(5, -6);
@@ -54,6 +53,7 @@ public class BallScript : MonoBehaviour
         {
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
+                Destroy(gameObject);
                 GameManager.Instance.GameWin("AI");
             }
             else
@@ -71,6 +71,7 @@ public class BallScript : MonoBehaviour
         {
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
+                Destroy(gameObject);
                 GameManager.Instance.GameWin("Player");
             }
             else
