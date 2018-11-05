@@ -22,9 +22,9 @@ class GameManager : MonoBehaviour
 
     [SerializeField]
     public Color red, green, blue;
-
-    int playerScore = 0;
-    int aiScore = 0;
+    
+    [HideInInspector]
+    public int playerScore = 0, aiScore = 0;
 
     [SerializeField]
     Text AIText, playerText;

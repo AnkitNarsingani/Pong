@@ -10,6 +10,8 @@ public class BallScript : MonoBehaviour
 
     float timer = 0f;
 
+    private bool canMove = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,23 +22,38 @@ public class BallScript : MonoBehaviour
         UpdateColor();
 
         force.x = Random.Range(5, -6);
-        int random = Random.Range(1, 3);
-        if (random == 1)
+
+        if (GameManager.Instance.playerScore + GameManager.Instance.aiScore == 0)
         {
             rb.AddForce(force);
             GameManager.Instance.goingUp = true;
             GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
-        }
-        else
-        {
-            rb.AddForce(-force);
-            GameManager.Instance.goingUp = false;
         }
     }
 
     void Update()
     {
         timer += Time.deltaTime;
+
+        if (Input.touchCount > 0 && canMove)
+            StartRally();
+    }
+
+    void StartRally()
+    {
+        if (GameManager.Instance.goingUp)
+        {
+            rb.AddForce(force);
+            GameManager.Instance.goingUp = true;
+            GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
+            canMove = false;
+        }
+        else if (!GameManager.Instance.goingUp)
+        {
+            rb.AddForce(-force);
+            GameManager.Instance.goingUp = false;
+            canMove = false;
+        }
     }
 
     private void UpdateColor()
@@ -54,6 +71,7 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
+                GameManager.Instance.goingUp = true;
                 GameManager.Instance.GameWin("AI");
             }
             else
@@ -72,6 +90,7 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
+                GameManager.Instance.goingUp = false;
                 GameManager.Instance.GameWin("Player");
             }
             else
@@ -88,19 +107,26 @@ public class BallScript : MonoBehaviour
         {
             Destroy(gameObject);
             if (collision.gameObject.name.Equals("Top Wall"))
+            {
+                GameManager.Instance.goingUp = false;
                 GameManager.Instance.GameWin("Player");
+            }
             else if (collision.gameObject.name.Equals("Bottom Wall"))
+            {
+                GameManager.Instance.goingUp = true;
                 GameManager.Instance.GameWin("AI");
+            }
+
         }
     }
 
     Vector2 GetBallForce(float xForce)
     {
-        if(GameManager.Instance.rally <= 4)
+        if (GameManager.Instance.rally <= 4)
         {
             return new Vector2(xForce * 2.5f, 5.5f);
         }
-        else if(GameManager.Instance.rally <= 8)
+        else if (GameManager.Instance.rally <= 8)
         {
             return new Vector2(xForce * 3, 7);
         }

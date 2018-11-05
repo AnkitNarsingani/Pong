@@ -17,7 +17,7 @@ public class AIScript : MonoBehaviour
     public Color currentColor;
     private int count = 0;
 
-    bool canMove = false;
+    private bool canMove = false;
 
     void Start()
     {
@@ -35,11 +35,13 @@ public class AIScript : MonoBehaviour
         {
             if (GameManager.Instance.goingUp && canMove)
             {
-                if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -2.25)
+                //Going Left
+                if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -1.95f)
                     transform.localPosition += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
-
-                if (transform.localPosition.x < ball.transform.localPosition.x && transform.localPosition.x < 2.25)
-                    transform.localPosition += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                    
+                //Going Right
+                if (transform.localPosition.x < ball.transform.localPosition.x && transform.localPosition.x < 1.95f)
+                    transform.localPosition += new Vector3(moveSpeed * Time.deltaTime, 0, 0);     
             }
             else if (!GameManager.Instance.goingUp)
             {

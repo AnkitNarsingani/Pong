@@ -10,17 +10,6 @@ public class PlayerColor : MonoBehaviour
     [HideInInspector]
     public Color currentColor;
 
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-
-    }
-
     public void OnTouchDown(Vector3 point)
     {
         count++;

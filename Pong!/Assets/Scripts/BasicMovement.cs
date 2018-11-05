@@ -13,10 +13,10 @@ public class BasicMovement : MonoBehaviour
 
     void Update()
     {
-        if (bob.position.x < -2.25f)
-            bob.position = new Vector3(-2.25f, bob.position.y, bob.position.z);
-        if (bob.position.x > 2.25f)
-            bob.position = new Vector3(2.25f, bob.position.y, bob.position.z);
+        if (bob.position.x < -1.95f)
+            bob.position = new Vector3(-1.95f, bob.position.y, bob.position.z);
+        if (bob.position.x > 1.95f)
+            bob.position = new Vector3(1.95f, bob.position.y, bob.position.z);
 
         bob.position = Vector3.Lerp(bob.position, targetPos, speed * Time.deltaTime);
     }
