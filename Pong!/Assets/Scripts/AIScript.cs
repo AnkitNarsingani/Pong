@@ -36,7 +36,7 @@ public class AIScript : MonoBehaviour
             if (GameManager.Instance.goingUp && canMove)
             {
                 //Going Left
-                if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -1.95f)
+                if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -1.68f)
                     transform.localPosition += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
                     
                 //Going Right
@@ -83,11 +83,10 @@ public class AIScript : MonoBehaviour
             yield return new WaitForEndOfFrame();
         else
             yield return new WaitForSeconds(colorWaitTime);
-
-
+            
         if (sr.color != currentColor && GameManager.Instance.goingUp)
             StartCoroutine(Changecolor());
         else
-            canMove = true;
+            canMove = true;            
     }
 }

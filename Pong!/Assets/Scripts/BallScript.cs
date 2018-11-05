@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BallScript : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class BallScript : MonoBehaviour
 
     float timer = 0f;
 
-    private bool canMove = true;
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,40 +18,31 @@ public class BallScript : MonoBehaviour
     }
     void Start()
     {
+        GameManager.Instance.goingUp = true;
         UpdateColor();
 
         force.x = Random.Range(5, -6);
-
-        if (GameManager.Instance.playerScore + GameManager.Instance.aiScore == 0)
-        {
-            rb.AddForce(force);
-            GameManager.Instance.goingUp = true;
-            GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
-        }
+        GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
+        StartCoroutine(StartRally());
     }
 
     void Update()
     {
         timer += Time.deltaTime;
-
-        if (Input.touchCount > 0 && canMove)
-            StartRally();
     }
 
-    void StartRally()
+    void StartRallyy()
     {
         if (GameManager.Instance.goingUp)
         {
             rb.AddForce(force);
             GameManager.Instance.goingUp = true;
             GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
-            canMove = false;
         }
         else if (!GameManager.Instance.goingUp)
         {
             rb.AddForce(-force);
             GameManager.Instance.goingUp = false;
-            canMove = false;
         }
     }
 
@@ -64,6 +54,14 @@ public class BallScript : MonoBehaviour
         GameManager.Instance.AI.GetComponent<AIScript>().currentColor = thisBallColor;
     }
 
+    IEnumerator StartRally()
+    {
+        yield return new WaitForSeconds(2f);
+        rb.AddForce(force);
+        GameManager.Instance.goingUp = true;
+        //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && timer >= 0.5f)
@@ -71,7 +69,6 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
-                GameManager.Instance.goingUp = true;
                 GameManager.Instance.GameWin("AI");
             }
             else
@@ -90,7 +87,6 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
-                GameManager.Instance.goingUp = false;
                 GameManager.Instance.GameWin("Player");
             }
             else
@@ -107,16 +103,9 @@ public class BallScript : MonoBehaviour
         {
             Destroy(gameObject);
             if (collision.gameObject.name.Equals("Top Wall"))
-            {
-                GameManager.Instance.goingUp = false;
                 GameManager.Instance.GameWin("Player");
-            }
             else if (collision.gameObject.name.Equals("Bottom Wall"))
-            {
-                GameManager.Instance.goingUp = true;
                 GameManager.Instance.GameWin("AI");
-            }
-
         }
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerColor : MonoBehaviour
 {
     [SerializeField]
-    SpriteRenderer sr;
+    SpriteRenderer srPlayer, srPaddle;
 
     private int count = 0;
 
@@ -16,14 +16,17 @@ public class PlayerColor : MonoBehaviour
         switch (count)
         {
             case 1:
-                sr.color = GameManager.Instance.red;
+                srPlayer.color = GameManager.Instance.red;
+                srPaddle.color = GameManager.Instance.red;
                 break;
             case 2:
-                sr.color = GameManager.Instance.green;
+                srPlayer.color = GameManager.Instance.green;
+                srPaddle.color = GameManager.Instance.green;
                 break;
             case 3:
                 count = 0;
-                sr.color = GameManager.Instance.blue;
+                srPlayer.color = GameManager.Instance.blue;
+                srPaddle.color = GameManager.Instance.blue;
                 break;
         }
     }

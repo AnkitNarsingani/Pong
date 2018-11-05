@@ -18,9 +18,9 @@ public class PlayerControlPC : MonoBehaviour {
 
     private void Move()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -2.2f)
+        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -1.68f)
             transform.position += Vector3.left * 10 * Time.deltaTime;
-        else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 2.2f)
+        else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 1.95f)
             transform.position -= Vector3.left * 10 * Time.deltaTime;
     }
 }
