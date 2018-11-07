@@ -11,6 +11,9 @@ public class BallScript : MonoBehaviour
 
     float timer = 0f;
 
+    [SerializeField]
+    Sprite ballBoundaries, ballNoBoundaries;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -106,6 +109,22 @@ public class BallScript : MonoBehaviour
                 GameManager.Instance.GameWin("Player");
             else if (collision.gameObject.name.Equals("Bottom Wall"))
                 GameManager.Instance.GameWin("AI");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Equals("Paddle"))
+        {
+            sr.sprite = ballBoundaries;
+        }    
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Equals("Paddle"))
+        {
+            sr.sprite = ballNoBoundaries;
         }
     }
 

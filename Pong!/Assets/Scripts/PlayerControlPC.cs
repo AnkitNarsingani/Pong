@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class PlayerControlPC : MonoBehaviour {
+public class PlayerControlPC : MonoBehaviour
+{
+    void Start()
+    {
 
-	void Start () {
-		
-	}
-	
-	void Update ()
+    }
+    
+    void Update()
     {
         Move();
 
         if (Input.GetKeyDown(KeyCode.Space))
             GetComponentInParent<PlayerColor>().OnTouchDown(Vector3.one);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EditorApplication.isPaused = true;
+        }
+
     }
 
     private void Move()
