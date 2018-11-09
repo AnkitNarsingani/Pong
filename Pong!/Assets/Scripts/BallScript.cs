@@ -76,6 +76,7 @@ public class BallScript : MonoBehaviour
             }
             else
             {
+                collision.gameObject.GetComponentInChildren<Animator>().Play("Player Hit");
                 float Xvelocity = transform.position.x - collision.transform.position.x;
                 rb.velocity = GetBallForce(Xvelocity);
                 GameManager.Instance.rally++;
@@ -114,25 +115,20 @@ public class BallScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Paddle"))
-        {
-            sr.sprite = ballBoundaries;
-        }    
+
+        sr.sprite = ballBoundaries;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Paddle"))
-        {
-            sr.sprite = ballNoBoundaries;
-        }
+        sr.sprite = ballNoBoundaries;
     }
 
     Vector2 GetBallForce(float xForce)
     {
         if (GameManager.Instance.rally <= 4)
         {
-            return new Vector2(xForce * 2.5f, 5.5f);
+            return new Vector2(xForce * 3.5f, 5.5f);
         }
         else if (GameManager.Instance.rally <= 8)
         {
