@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 class GameManager : MonoBehaviour
@@ -21,16 +20,10 @@ class GameManager : MonoBehaviour
     public bool goingUp;
 
     [SerializeField]
-    public Color red, green, blue;
-    
+    public Color firstColor, secondColor, thirdColor;
+
     [HideInInspector]
-    public int playerScore = 0, aiScore = 0;
-
-    [SerializeField]
-    Text AIText, playerText;
-
-    [SerializeField]
-    int winScore = 5;
+    public bool isLeftHanded = true;
 
     void Awake()
     {
@@ -43,14 +36,11 @@ class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        Time.timeScale = 1;
     }
 
     void Start()
     {
-        UpdateScore();
-        Reference();
+        
     }
 
     void Update()
@@ -58,7 +48,12 @@ class GameManager : MonoBehaviour
         
     }
 
-    void Reference()
+    void GetPlayerData()
+    {
+        PlayerPrefs.SetInt("RightHanded", 1);
+    }
+
+    public void Reference()
     {
         player = GameObject.FindWithTag("Player");
         AI = GameObject.FindWithTag("AI");
@@ -72,56 +67,13 @@ class GameManager : MonoBehaviour
         switch (token)
         {
             case 1:
-                return red;
+                return firstColor;
             case 2:
-                return green;
+                return secondColor;
             case 3:
-                return blue;
+                return thirdColor;
             default:
-                return red;
+                return firstColor;
         }
-    }
-
-    public void GameLose()
-    {
-        rally = 0;
-        Reference();
-    }
-
-    public void GameWin(string winner)
-    {
-        if (winner.Equals("AI"))
-        {
-            aiScore++;
-            UpdateScore();
-            if (aiScore >= winScore)
-            {
-                Debug.Log("AI Wins");
-            }
-            else
-            {
-                GameLose();
-            }
-        }
-        else if (winner.Equals("Player"))
-        {
-            playerScore++;
-            UpdateScore();
-            if (playerScore >= winScore)
-            {
-                Debug.Log("Player Wins");
-            }
-            else
-            {
-                GameLose();
-            }
-        }
-
-    }
-
-    void UpdateScore()
-    {
-        AIText.text = aiScore.ToString();
-        playerText.text = playerScore.ToString();
     }
 }

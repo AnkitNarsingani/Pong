@@ -22,6 +22,7 @@ public class AIScript : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        GameManager.Instance.Reference();
     }
 
     void Update()
@@ -65,14 +66,14 @@ public class AIScript : MonoBehaviour
         switch (count)
         {
             case 1:
-                sr.color = GameManager.Instance.red;
+                sr.color = GameManager.Instance.firstColor;
                 break;
             case 2:
-                sr.color = GameManager.Instance.green;
+                sr.color = GameManager.Instance.secondColor;
                 break;
             case 3:
                 count = 0;
-                sr.color = GameManager.Instance.blue;
+                sr.color = GameManager.Instance.thirdColor;
                 break;
         }
 

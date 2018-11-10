@@ -62,7 +62,6 @@ public class BallScript : MonoBehaviour
         yield return new WaitForSeconds(2f);
         rb.AddForce(force);
         GameManager.Instance.goingUp = true;
-        //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -72,7 +71,7 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
-                GameManager.Instance.GameWin("AI");
+                UIManager.Instance.GameWin("AI");
             }
             else
             {
@@ -91,7 +90,7 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
-                GameManager.Instance.GameWin("Player");
+                UIManager.Instance.GameWin("Player");
             }
             else
             {
@@ -107,9 +106,9 @@ public class BallScript : MonoBehaviour
         {
             Destroy(gameObject);
             if (collision.gameObject.name.Equals("Top Wall"))
-                GameManager.Instance.GameWin("Player");
+                UIManager.Instance.GameWin("Player");
             else if (collision.gameObject.name.Equals("Bottom Wall"))
-                GameManager.Instance.GameWin("AI");
+                UIManager.Instance.GameWin("AI");
         }
     }
 
