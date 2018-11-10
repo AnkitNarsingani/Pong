@@ -70,4 +70,9 @@ public class MenuManager : MonoBehaviour {
             button.image.overrideSprite = muteSprite;
         }
     }
+
+    public void LevelLoad(int level)
+    {
+        SceneManager.LoadScene(level);
+    }
 }
