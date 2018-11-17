@@ -23,7 +23,7 @@ class GameManager : MonoBehaviour
     public Color firstColor, secondColor, thirdColor;
 
     [HideInInspector]
-    public bool isLeftHanded = true;
+    public bool isLeftHanded;
 
     void Awake()
     {
@@ -40,12 +40,28 @@ class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        if(PlayerPrefs.GetInt("isLeftHanded") == 1)
+        {
+            isLeftHanded = true;
+        }
+        else if(PlayerPrefs.GetInt("isLeftHanded") == 0)
+        {
+            isLeftHanded = false;
+        }
     }
 
     void Update()
     {
         
+    }
+
+    public void UpdateSettings()
+    {
+        isLeftHanded = !isLeftHanded;
+        if (isLeftHanded)
+            PlayerPrefs.SetInt("isLeftHanded", 1);
+        else
+            PlayerPrefs.SetInt("isLeftHanded", 0);
     }
 
     void GetPlayerData()

@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 490e66c5df0fee64d8bd6cb60a2413c5
+  - enabled: 1
+    path: Assets/Scenes/Endless Rally.unity
+    guid: f4c88572d783d4f4fba77425cd14f492

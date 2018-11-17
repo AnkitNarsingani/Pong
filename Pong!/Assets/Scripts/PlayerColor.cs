@@ -26,25 +26,28 @@ public class PlayerColor : MonoBehaviour
 
     public void OnTouchDown(Vector3 point)
     {
-        count++;
-        switch (count)
+        if(Time.timeScale != 0)
         {
-            case 1:
-                srPlayer.color = GameManager.Instance.firstColor;
-                srPaddleLeft.color = GameManager.Instance.firstColor;
-                srPaddleRight.color = GameManager.Instance.firstColor;
-                break;
-            case 2:
-                srPlayer.color = GameManager.Instance.secondColor;
-                srPaddleLeft.color = GameManager.Instance.secondColor;
-                srPaddleRight.color = GameManager.Instance.secondColor;
-                break;
-            case 3:
-                count = 0;
-                srPlayer.color = GameManager.Instance.thirdColor;
-                srPaddleLeft.color = GameManager.Instance.thirdColor;
-                srPaddleRight.color = GameManager.Instance.thirdColor;
-                break;
-        }
+            count++;
+            switch (count)
+            {
+                case 1:
+                    srPlayer.color = GameManager.Instance.firstColor;
+                    srPaddleLeft.color = GameManager.Instance.firstColor;
+                    srPaddleRight.color = GameManager.Instance.firstColor;
+                    break;
+                case 2:
+                    srPlayer.color = GameManager.Instance.secondColor;
+                    srPaddleLeft.color = GameManager.Instance.secondColor;
+                    srPaddleRight.color = GameManager.Instance.secondColor;
+                    break;
+                case 3:
+                    count = 0;
+                    srPlayer.color = GameManager.Instance.thirdColor;
+                    srPaddleLeft.color = GameManager.Instance.thirdColor;
+                    srPaddleRight.color = GameManager.Instance.thirdColor;
+                    break;
+            }
+        }        
     }
 }

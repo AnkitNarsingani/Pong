@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class BallScript : MonoBehaviour
+public class BallScriptEndless : MonoBehaviour
 {
     Rigidbody2D rb;
 
@@ -25,7 +25,7 @@ public class BallScript : MonoBehaviour
         UpdateColor();
 
         force.x = Random.Range(5, -6);
-        GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
+        //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
         StartCoroutine(StartRally());
     }
 
@@ -40,7 +40,7 @@ public class BallScript : MonoBehaviour
         {
             rb.AddForce(force);
             GameManager.Instance.goingUp = true;
-            GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
+            //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
         }
         else if (!GameManager.Instance.goingUp)
         {
@@ -54,7 +54,7 @@ public class BallScript : MonoBehaviour
         Color thisBallColor = GameManager.Instance.GenerateRandomColor();
         sr.color = thisBallColor;
         GameManager.Instance.player.GetComponentInParent<PlayerColor>().currentColor = thisBallColor;
-        GameManager.Instance.AI.GetComponent<AIScript>().currentColor = thisBallColor;
+        //GameManager.Instance.AI.GetComponent<AIScript>().currentColor = thisBallColor;
     }
 
     IEnumerator StartRally()
@@ -71,7 +71,7 @@ public class BallScript : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
-                UIManager.Instance.GameWin("AI");
+                PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
             }
             else
             {
@@ -81,39 +81,31 @@ public class BallScript : MonoBehaviour
                 GameManager.Instance.rally++;
                 GameManager.Instance.goingUp = true;
                 UpdateColor();
-                GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();   
+                //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
                 timer = 0;
             }
         }
         else if (collision.gameObject.CompareTag("AI") && timer >= 0.5f)
         {
-            if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
-            {
-                Destroy(gameObject);
-                UIManager.Instance.GameWin("Player");
-            }
-            else
-            {
-                float Xvelocity = transform.position.x - collision.transform.position.x;
-                rb.velocity = -GetBallForce(-Xvelocity);
-                GameManager.Instance.rally++;
-                GameManager.Instance.goingUp = false;
-                UpdateColor();
-                timer = 0;
-            }
+            float Xvelocity = transform.position.x - collision.transform.position.x;
+            rb.velocity = -GetBallForce(-Xvelocity);
+            UIManager.Instance.GameWinEndless();
+            GameManager.Instance.rally++;
+            GameManager.Instance.goingUp = false;
+            UpdateColor();
+            timer = 0;
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
-            if (collision.gameObject.name.Equals("Top Wall"))
-                UIManager.Instance.GameWin("Player");
-            else if (collision.gameObject.name.Equals("Bottom Wall"))
-                UIManager.Instance.GameWin("AI");
+            PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
+            UIManager.Instance.ChangeProfile();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         sr.sprite = ballBoundaries;
     }
 
@@ -124,17 +116,35 @@ public class BallScript : MonoBehaviour
 
     Vector2 GetBallForce(float xForce)
     {
-        if (GameManager.Instance.rally <= 4)
+        if(GameManager.Instance.goingUp)
         {
-            return new Vector2(xForce * 3.5f, 5.5f);
-        }
-        else if (GameManager.Instance.rally <= 8)
-        {
-            return new Vector2(xForce * 3, 7);
+            if (GameManager.Instance.rally <= 4)
+            {
+                return new Vector2(xForce * 1f, 5.5f);
+            }
+            else if (GameManager.Instance.rally <= 8)
+            {
+                return new Vector2(xForce * 1f, 7);
+            }
+            else
+            {
+                return new Vector2(xForce * 1f, 8.5f);
+            }
         }
         else
         {
-            return new Vector2(xForce * 3.5f, 8.5f);
-        }
+            if (GameManager.Instance.rally <= 4)
+            {
+                return new Vector2(xForce * 3.5f, 5.5f);
+            }
+            else if (GameManager.Instance.rally <= 8)
+            {
+                return new Vector2(xForce * 3, 7);
+            }
+            else
+            {
+                return new Vector2(xForce * 3.5f, 8.5f);
+            }
+        }     
     }
 }

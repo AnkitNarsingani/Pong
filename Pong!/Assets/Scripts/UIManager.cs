@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,10 +17,15 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public int playerScore = 0, aiScore = 0;
 
+    float timer;
+
 
     [SerializeField]
     Text AIText, playerText;
 
+    bool isGreyScale = false;
+
+    bool isLookingForInput = false;
 
     [SerializeField]
     int winScore = 5;
@@ -37,9 +42,40 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         UpdateScore();
+    }
+
+    void Update()
+    {
+        if (isLookingForInput && Input.touchCount > 0 && timer > 1f)
+        {
+            ChangeProfile();
+            timer = 0f;
+        }
+        else if (isLookingForInput)
+        {
+            timer += Time.deltaTime;
+        }
+    }
+
+    public void ChangeProfile()
+    {
+        isGreyScale = !isGreyScale;
+        if (isGreyScale)
+        {
+            Camera.main.GetComponent<Grayscale>().enabled = true;
+            gameOverUI.SetActive(true);
+            isLookingForInput = true;
+        }
+        else
+        {
+            Camera.main.GetComponent<Grayscale>().enabled = false;
+            gameOverUI.SetActive(false);
+            isLookingForInput = false;
+            GameLose();
+        }
     }
 
     public void GameWin(string winner)
@@ -50,11 +86,12 @@ public class UIManager : MonoBehaviour
             UpdateScore();
             if (aiScore >= winScore)
             {
+                PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel") + 1);
                 Debug.Log("AI Wins");
             }
             else
             {
-                GameLose();
+                ChangeProfile();
             }
         }
         else if (winner.Equals("Player"))
@@ -67,16 +104,23 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                GameLose();
+                ChangeProfile();
             }
         }
 
     }
 
+    public void GameWinEndless()
+    {
+        aiScore++;
+        UpdateScore();
+    }
+
     void UpdateScore()
     {
         AIText.text = aiScore.ToString();
-        playerText.text = playerScore.ToString();
+        if (playerText != null)
+            playerText.text = playerScore.ToString();
     }
 
     public void GameLose()
@@ -89,7 +133,7 @@ public class UIManager : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        if(isPaused)
+        if (isPaused)
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);
@@ -99,5 +143,10 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
             pauseUI.SetActive(false);
         }
+    }
+
+    public void LevelLoad(int level)
+    {
+        SceneManager.LoadScene(level);
     }
 }

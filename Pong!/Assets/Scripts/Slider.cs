@@ -2,19 +2,32 @@ using UnityEngine;
 
 public class Slider : MonoBehaviour
 {
+    [HideInInspector]
+    public float minSwipeDistY = 100;
 
-    public float minSwipeDistY;
-
-    public float minSwipeDistX;
+    [HideInInspector]
+    public float minSwipeDistX = 100;
 
     private Vector2 startPos;
 
     [HideInInspector]
     public float swipeValue;
 
+    int index = 0;
+
+    bool rightSwipe = false, leftSwipe = false;
+
+    private RectTransform rectTransform;
+
+    float minMoveBounds;
+
+    private void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !rightSwipe && !leftSwipe)
         {
             Touch touch = Input.touches[0];
 
@@ -34,21 +47,62 @@ public class Slider : MonoBehaviour
                         
                         if (swipeValue > 0)//right swipe
                         {
-                            //animator.Play("Slider Left");
-                            //leftDot.GetComponent<RectTransform>().sizeDelta = new Vector2(40, 40);
-                            //rightDot.GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
-                            //Invoke("ArrowRight", 0.35f);
+                            SetBounds(false);
+                            rightSwipe = true;
                         }
                         else if (swipeValue < 0)//left swipe
                         {
-                            //animator.Play("Slider Right");
-                            //leftDot.GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
-                            //rightDot.GetComponent<RectTransform>().sizeDelta = new Vector2(40, 40);
-                            //Invoke("ArrowLeft", 0.35f);
+                            SetBounds(true);
+                            leftSwipe = true;
                         }
                     }
                     break;
             }
+        }
+
+        if(rightSwipe)
+        {
+            if (index >= -2 && index <= 1 && rectTransform.localPosition.x < minMoveBounds)
+                rectTransform.localPosition += new Vector3(1000 * Time.deltaTime, 0, 0);
+            else
+                rightSwipe = false;
+        }
+        else if(leftSwipe)
+        {
+            if (index >= -2 && index <= 1 && rectTransform.localPosition.x > minMoveBounds)
+                rectTransform.localPosition -= new Vector3(1000 * Time.deltaTime, 0, 0);
+            else
+                leftSwipe = false;
+        }
+    }
+
+    void SetBounds(bool increment)
+    {
+        if (increment)
+            index++;
+        else
+            index--;
+
+        switch(index)
+        {
+            case 2:
+                index = 1;
+                break;
+            case 1:
+                minMoveBounds = -3260f;
+                break;
+            case 0:
+                minMoveBounds = -1887f;
+                break;
+            case -1:
+                minMoveBounds = -513f;
+                break;
+            case -2:
+                minMoveBounds = 850f;
+                break;
+            case -3:
+                index = -2;
+                break;
         }
     }
 }

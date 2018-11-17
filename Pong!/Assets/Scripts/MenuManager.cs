@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
     [SerializeField]
-    string Column1;
+    string Column1 = "Settings";
 
     [SerializeField]
     Text leftHanded, rightHanded;
@@ -16,10 +16,48 @@ public class MenuManager : MonoBehaviour {
 
     bool muted = false;
 
-	void Start ()
+    [SerializeField]
+    Animator anim;
+
+    [SerializeField]
+    string Column2 = "Level Selector";
+
+    [SerializeField]
+    Text nextLevelName;
+
+    [SerializeField]
+    Image noFaceSprite;
+
+    [SerializeField]
+    string Column3 = "Endless Mode";
+
+    [SerializeField]
+    Text endlessHighScore;
+
+    [SerializeField]
+    Sprite[] levelSprites;
+
+    Sprite currentLevelSprite;
+
+    void Start ()
     {
-		
-	}
+        Time.timeScale = 1;
+
+        if (GameManager.Instance.isLeftHanded)
+        {
+            anim.Play("Slide Left");
+            leftHanded.color = Color.black;
+            rightHanded.color = Color.white;
+        }
+        else
+        {
+            anim.Play("Slide Right");
+            leftHanded.color = Color.white;
+            rightHanded.color = Color.black;
+        }
+
+        endlessHighScore.text = PlayerPrefs.GetInt("maxRallies").ToString();
+    }
 	
 
 	void Update ()
@@ -28,9 +66,9 @@ public class MenuManager : MonoBehaviour {
 	}
 
 
-    public void OnTouchHand(Animator anim)
+    public void OnTouchHand()
     {
-        GameManager.Instance.isLeftHanded = !GameManager.Instance.isLeftHanded;
+        GameManager.Instance.UpdateSettings();
 
         if(GameManager.Instance.isLeftHanded)
         {
