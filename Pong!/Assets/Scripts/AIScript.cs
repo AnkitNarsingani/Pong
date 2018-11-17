@@ -77,7 +77,7 @@ public class AIScript : MonoBehaviour
                 break;
         }
 
-        if (GameManager.Instance.rally > SceneManager.GetActiveScene().buildIndex + 6)
+        if (GameManager.Instance.rally > SceneManager.GetActiveScene().buildIndex + 4)
             moveSpeed = 3.5f;
 
         if (sr.color == currentColor && GameManager.Instance.goingUp)
