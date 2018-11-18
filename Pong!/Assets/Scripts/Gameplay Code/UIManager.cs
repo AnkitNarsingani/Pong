@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         UpdateScore();
+
     }
 
     void Update()
@@ -106,8 +107,7 @@ public class UIManager : MonoBehaviour
             aiScore++;
             UpdateScore();
             if (aiScore >= winScore)
-            {
-                PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel") + 1);
+            {              
                 Debug.Log("AI Wins");
             }
             else
@@ -121,6 +121,7 @@ public class UIManager : MonoBehaviour
             UpdateScore();
             if (playerScore >= winScore)
             {
+                PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel") + 1);
                 Debug.Log("Player Wins");
             }
             else

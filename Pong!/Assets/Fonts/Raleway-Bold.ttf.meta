@@ -4,7 +4,7 @@ TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
   fontSize: 200
-  forceTextureCase: -1
+  forceTextureCase: 0
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 0
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Raleway
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 1
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   userData: 

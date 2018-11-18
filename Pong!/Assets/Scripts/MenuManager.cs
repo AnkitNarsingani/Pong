@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
     [SerializeField]
+    GameObject menuUI, startUI;
+
+    [SerializeField]
     string Column1 = "Settings";
 
     [SerializeField]
@@ -26,7 +29,7 @@ public class MenuManager : MonoBehaviour {
     Text nextLevelName;
 
     [SerializeField]
-    Image noFaceSprite;
+    Image faceSprite;
 
     [SerializeField]
     string Column3 = "Endless Mode";
@@ -34,10 +37,31 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     Text endlessHighScore;
 
+    Sprite currentLevelSprite;
+
+    [SerializeField]
+    string Column4 = "Start UI";
+
+    [SerializeField]
+    bool shouldPlayanim = false;
+
+    [SerializeField]
+    Color yellow;
+
+    [SerializeField]
+    RectTransform baby, levelNameText;
+
+    [SerializeField]
+    Text levelNumber;
+
+    [SerializeField]
+    Image face; 
+
     [SerializeField]
     Sprite[] levelSprites;
 
-    Sprite currentLevelSprite;
+    [SerializeField]
+    string[] levelName;
 
     void Start ()
     {
@@ -62,8 +86,24 @@ public class MenuManager : MonoBehaviour {
 
 	void Update ()
     {
-		
-	}
+		if(shouldPlayanim)
+        {
+            if (baby.localPosition.x < 0)
+            {
+                baby.localPosition += new Vector3(43, 0, 0);
+            }               
+            if(levelNameText.localPosition.x > 17)
+            {
+                levelNameText.localPosition -= new Vector3(43, 0, 0);
+            }
+        }
+
+        if (levelNameText.localPosition.x < 18 && baby.localPosition.x > 0 && !shouldPlayanim)
+        {
+            baby.localPosition += new Vector3(43, 0, 0);
+            levelNameText.localPosition -= new Vector3(43, 0, 0);
+        }
+    }
 
 
     public void OnTouchHand()
@@ -107,6 +147,26 @@ public class MenuManager : MonoBehaviour {
             AudioListener.volume = 1;
             button.image.overrideSprite = muteSprite;
         }
+    }
+
+    public void OnTouchPlay()
+    {
+        menuUI.SetActive(false);
+        Camera.main.backgroundColor = yellow;
+        startUI.SetActive(true);
+        shouldPlayanim = true;
+        StartCoroutine(ChangeLevel());
+    }
+
+    IEnumerator ChangeLevel()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        shouldPlayanim = false;
+
+        yield return new WaitForSeconds(2f);
+
+        LevelLoad(PlayerPrefs.GetInt("currentLevel" , 1));
     }
 
     public void LevelLoad(int level)

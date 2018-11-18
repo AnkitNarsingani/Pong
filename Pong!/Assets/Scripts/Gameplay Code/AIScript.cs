@@ -49,10 +49,6 @@ public class AIScript : MonoBehaviour
                 canMove = false; 
             }
         }
-        else
-        {
-            Debug.Log("Cannot find ball --> AI");
-        }
     }
 
     public void StartColorChange()

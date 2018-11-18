@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: db7ea1f93daeeb74cbaf29ba4e1ad80e
+guid: f20dd40480f594841816e18a74b9df48
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Cat[NotFinal]_0
+    21300000: CatAnimFlies_24
+    21300002: CatAnimFlies_3
+    21300004: CatAnimFlies_4
+    21300006: CatAnimFlies_1
+    21300008: CatAnimFlies_5
+    21300010: CatAnimFlies_2
+    21300012: CatAnimFlies_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -90,15 +96,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cat[NotFinal]_0
+      name: CatAnimFlies_3
       rect:
         serializedVersion: 2
-        x: 206
-        y: 475
-        width: 164
-        height: 74
+        x: 101
+        y: 262
+        width: 162
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CatAnimFlies_4
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 259
+        width: 162
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CatAnimFlies_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 379
+        width: 162
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CatAnimFlies_5
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 486
+        width: 162
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CatAnimFlies_2
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 378
+        width: 162
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CatAnimFlies_6
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 487
+        width: 162
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
