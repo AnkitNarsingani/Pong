@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField]
-    GameObject inGameUI, pauseUI, gameOverUI;
+    GameObject inGameUI, pauseUI, gameOverUI, gameWinUI;
 
 
     private bool isPaused = false;
@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     Text AIText, playerText;
 
     bool isGreyScale = false;
+
+    bool displayText = false;
 
     bool isLookingForInput = false;
 
@@ -51,7 +53,10 @@ public class UIManager : MonoBehaviour
     {
         if (isLookingForInput && Input.touchCount > 0 && timer > 1f)
         {
-            ChangeProfile();
+            if (isGreyScale)
+                ChangeProfileLost();
+            else if (displayText)
+                ChangeProfileWin();
             timer = 0f;
         }
         else if (isLookingForInput)
@@ -60,7 +65,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ChangeProfile()
+    void ChangeProfileLost()
     {
         isGreyScale = !isGreyScale;
         if (isGreyScale)
@@ -73,6 +78,22 @@ public class UIManager : MonoBehaviour
         {
             Camera.main.GetComponent<Grayscale>().enabled = false;
             gameOverUI.SetActive(false);
+            isLookingForInput = false;
+            GameLose();
+        }
+    }
+
+    void ChangeProfileWin()
+    {
+        displayText = !displayText;
+        if (displayText)
+        { 
+            gameWinUI.SetActive(true);
+            isLookingForInput = true;
+        }
+        else
+        {
+            gameWinUI.SetActive(false);
             isLookingForInput = false;
             GameLose();
         }
@@ -91,7 +112,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                ChangeProfile();
+                ChangeProfileLost();
             }
         }
         else if (winner.Equals("Player"))
@@ -104,7 +125,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                ChangeProfile();
+                ChangeProfileWin();
             }
         }
 

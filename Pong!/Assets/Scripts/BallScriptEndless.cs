@@ -99,7 +99,7 @@ public class BallScriptEndless : MonoBehaviour
         {
             Destroy(gameObject);
             PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
-            UIManager.Instance.ChangeProfile();
+            UIManager.Instance.GameWin("AI");
         }
     }
 
