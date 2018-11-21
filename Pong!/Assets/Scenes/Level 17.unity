@@ -4820,7 +4820,7 @@ MonoBehaviour:
   playerColorScript: {fileID: 1860871827}
   UI:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32
   GameLoseBackgroundColor: {r: 0, g: 1, b: 0.91724133, a: 1}
   GameWinBackgroundColor: {r: 0.9294118, g: 0.7843138, b: 0.09411766, a: 1}
 --- !u!4 &2108478270
