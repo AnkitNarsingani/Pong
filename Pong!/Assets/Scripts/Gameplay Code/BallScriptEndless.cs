@@ -25,7 +25,6 @@ public class BallScriptEndless : MonoBehaviour
         UpdateColor();
 
         force.x = Random.Range(5, -6);
-        //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
         StartCoroutine(StartRally());
     }
 
@@ -34,27 +33,11 @@ public class BallScriptEndless : MonoBehaviour
         timer += Time.deltaTime;
     }
 
-    void StartRallyy()
-    {
-        if (GameManager.Instance.goingUp)
-        {
-            rb.AddForce(force);
-            GameManager.Instance.goingUp = true;
-            //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
-        }
-        else if (!GameManager.Instance.goingUp)
-        {
-            rb.AddForce(-force);
-            GameManager.Instance.goingUp = false;
-        }
-    }
-
     private void UpdateColor()
     {
         Color thisBallColor = GameManager.Instance.GenerateRandomColor();
         sr.color = thisBallColor;
         GameManager.Instance.player.GetComponentInParent<PlayerColor>().currentColor = thisBallColor;
-        //GameManager.Instance.AI.GetComponent<AIScript>().currentColor = thisBallColor;
     }
 
     IEnumerator StartRally()
@@ -72,16 +55,14 @@ public class BallScriptEndless : MonoBehaviour
             {
                 Destroy(gameObject);
                 PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
+                UIManager.Instance.GameLoseEndless();
             }
             else
             {
                 collision.gameObject.GetComponentInChildren<Animator>().Play("Player Hit");
                 float Xvelocity = transform.position.x - collision.transform.position.x;
                 rb.velocity = GetBallForce(Xvelocity);
-                GameManager.Instance.rally++;
                 GameManager.Instance.goingUp = true;
-                UpdateColor();
-                //GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
                 timer = 0;
             }
         }
@@ -90,7 +71,6 @@ public class BallScriptEndless : MonoBehaviour
             float Xvelocity = transform.position.x - collision.transform.position.x;
             rb.velocity = -GetBallForce(-Xvelocity);
             UIManager.Instance.GameWinEndless();
-            GameManager.Instance.rally++;
             GameManager.Instance.goingUp = false;
             UpdateColor();
             timer = 0;
@@ -99,7 +79,7 @@ public class BallScriptEndless : MonoBehaviour
         {
             Destroy(gameObject);
             PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
-            UIManager.Instance.GameWin("AI");
+            UIManager.Instance.GameLoseEndless();
         }
     }
 

@@ -34,21 +34,6 @@ public class BallScript : MonoBehaviour
         timer += Time.deltaTime;
     }
 
-    void StartRallyy()
-    {
-        if (GameManager.Instance.goingUp)
-        {
-            rb.AddForce(force);
-            GameManager.Instance.goingUp = true;
-            GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
-        }
-        else if (!GameManager.Instance.goingUp)
-        {
-            rb.AddForce(-force);
-            GameManager.Instance.goingUp = false;
-        }
-    }
-
     private void UpdateColor()
     {
         Color thisBallColor = GameManager.Instance.GenerateRandomColor();
@@ -95,6 +80,7 @@ public class BallScript : MonoBehaviour
             else
             {
                 float Xvelocity = transform.position.x - collision.transform.position.x;
+                collision.gameObject.GetComponentInChildren<Animator>().Play("Hit");
                 rb.velocity = -GetBallForce(-Xvelocity);
                 GameManager.Instance.rally++;
                 GameManager.Instance.goingUp = false;

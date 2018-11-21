@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
 
     bool isLookingForInput = false;
 
+    bool endless = false;
+
     [SerializeField]
     int winScore = 5;
 
@@ -82,6 +84,9 @@ public class UIManager : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
+
+        if(endless)
+            main.backgroundColor = Color.Lerp(main.backgroundColor, GameLoseBackgroundColor, Time.deltaTime);
     }
 
     void ChangeProfileLost()
@@ -185,6 +190,13 @@ public class UIManager : MonoBehaviour
     {
         aiScore++;
         UpdateScore();
+    }
+
+    public void GameLoseEndless()
+    {
+        main.cullingMask = UI;
+        endless = true;
+        //gameLosePointUI.SetActive(true);
     }
 
     void UpdateScore()
