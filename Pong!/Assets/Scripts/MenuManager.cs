@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
+    public static MenuManager Instance { get; private set; }
+
+    [HideInInspector]
+    public int currentLevelNo;
+
+    [HideInInspector]
+    public string currentLevelName;
+
     [SerializeField]
     GameObject menuUI, startUI;
 
@@ -42,26 +50,40 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     string Column4 = "Start UI";
 
-    [SerializeField]
     bool shouldPlayanim = false;
 
     [SerializeField]
     Color yellow;
+    [SerializeField]
+    RectTransform baby, levelNameTextRect;
 
     [SerializeField]
-    RectTransform baby, levelNameText;
+    Text levelNumber, levelNameText;
 
     [SerializeField]
-    Text levelNumber;
-
-    [SerializeField]
-    Image face; 
+    Image face;
 
     [SerializeField]
     Sprite[] levelSprites;
 
     [SerializeField]
     string[] levelName;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        currentLevelNo = PlayerPrefs.GetInt("currentLevel", 17);
+        currentLevelName = levelName[currentLevelNo - 1];
+        SetUI();
+    }
 
     void Start ()
     {
@@ -81,6 +103,9 @@ public class MenuManager : MonoBehaviour {
         }
 
         endlessHighScore.text = PlayerPrefs.GetInt("maxRallies").ToString();
+        currentLevelNo = PlayerPrefs.GetInt("currentLevel", 17);
+        currentLevelName = levelName[currentLevelNo - 1];
+        SetUI();
     }
 	
 
@@ -88,23 +113,33 @@ public class MenuManager : MonoBehaviour {
     {
 		if(shouldPlayanim)
         {
-            if (baby.localPosition.x < 0)
+            if (baby.localPosition.x < -27)
             {
                 baby.localPosition += new Vector3(43, 0, 0);
             }               
-            if(levelNameText.localPosition.x > 17)
+            if(levelNameTextRect.localPosition.x > 17)
             {
-                levelNameText.localPosition -= new Vector3(43, 0, 0);
+                levelNameTextRect.localPosition -= new Vector3(43, 0, 0);
             }
         }
 
-        if (levelNameText.localPosition.x < 18 && baby.localPosition.x > 0 && !shouldPlayanim)
+        if (levelNameTextRect.localPosition.x < 19 && baby.localPosition.x > -18 && !shouldPlayanim)
         {
             baby.localPosition += new Vector3(43, 0, 0);
-            levelNameText.localPosition -= new Vector3(43, 0, 0);
+            levelNameTextRect.localPosition -= new Vector3(43, 0, 0);
         }
     }
 
+    void SetUI()
+    {
+        levelNumber.text = currentLevelNo.ToString();
+        levelNameText.text = currentLevelName;
+        string[] t = currentLevelName.Split(' ');
+        nextLevelName.text = currentLevelNo.ToString() + "." + "\n" + t[0] + "\n" + t[1];
+        faceSprite.overrideSprite = levelSprites[currentLevelNo - 1];
+        face.overrideSprite = levelSprites[currentLevelNo - 1];
+
+    }
 
     public void OnTouchHand()
     {
@@ -164,13 +199,61 @@ public class MenuManager : MonoBehaviour {
 
         shouldPlayanim = false;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        LevelLoad(PlayerPrefs.GetInt("currentLevel" , 1));
+        LevelLoad(temp());
     }
 
     public void LevelLoad(int level)
     {
         SceneManager.LoadScene(level);
+    }
+
+    public void LevelLoad(string level)
+    {
+        SceneManager.LoadScene(level);
+    }
+
+    int temp()
+    {
+        switch(currentLevelNo)
+        {
+            case 17:
+                return 1;
+            case 16:
+                return 2;
+            case 15:
+                return 3;
+            case 14:
+                return 4;
+            case 13:
+                return 5;
+            case 12:
+                return 6;
+            case 11:
+                return 7;
+            case 10:
+                return 8;
+            case 9:
+                return 9;
+            case 8:
+                return 10;
+            case 7:
+                return 11;
+            case 6:
+                return 12;
+            case 5:
+                return 13;
+            case 4:
+                return 14;
+            case 3:
+                return 15;
+            case 2:
+                return 16;
+            case 1:
+                return 17;
+            default:
+                return 17;
+        }
     }
 }

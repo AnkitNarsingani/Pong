@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
@@ -9,7 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField]
-    GameObject inGameUI, pauseUI, gameOverUI, gameWinUI;
+    GameObject inGameUI, pauseUI, gameLosePointUI, gameWinPointUI, gameOverUI, gameWinUI;
 
 
     private bool isPaused = false;
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
 
     float timer;
 
+    Camera main;
 
     [SerializeField]
     Text AIText, playerText;
@@ -31,6 +33,23 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     int winScore = 5;
+
+    [SerializeField]
+    Color loseColorCamera, loseColorPlayer;
+
+    [SerializeField]
+    GameObject paddleLeft, paddleRight;
+
+    [SerializeField]
+    PlayerColor playerColorScript;
+
+    Color defaultColorCamera, defaultColorText;
+
+    [SerializeField]
+    LayerMask UI;
+
+    [SerializeField]
+    Color GameLoseBackgroundColor, GameWinBackgroundColor;
 
     private void Awake()
     {
@@ -47,17 +66,16 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         UpdateScore();
-
+        main = Camera.main;
+        defaultColorCamera = main.backgroundColor;
+        defaultColorText = AIText.color;
     }
 
     void Update()
     {
         if (isLookingForInput && Input.touchCount > 0 && timer > 1f)
         {
-            if (isGreyScale)
-                ChangeProfileLost();
-            else if (displayText)
-                ChangeProfileWin();
+            ChangeProfileLost();
             timer = 0f;
         }
         else if (isLookingForInput)
@@ -71,33 +89,44 @@ public class UIManager : MonoBehaviour
         isGreyScale = !isGreyScale;
         if (isGreyScale)
         {
-            Camera.main.GetComponent<Grayscale>().enabled = true;
-            gameOverUI.SetActive(true);
+            main.GetComponent<Grayscale>().enabled = true;
+            main.backgroundColor = loseColorCamera;
+            GameManager.Instance.player.GetComponent<SpriteRenderer>().color = loseColorPlayer;
+            GameManager.Instance.AI.GetComponent<SpriteRenderer>().color = loseColorPlayer;
+            paddleLeft.GetComponent<SpriteRenderer>().color = loseColorPlayer;
+            paddleRight.GetComponent<SpriteRenderer>().color = loseColorPlayer;
+            AIText.color = loseColorPlayer;
+            playerText.color = loseColorPlayer;
+            gameLosePointUI.SetActive(true);
             isLookingForInput = true;
         }
         else
         {
-            Camera.main.GetComponent<Grayscale>().enabled = false;
-            gameOverUI.SetActive(false);
+            main.GetComponent<Grayscale>().enabled = false;
+            main.backgroundColor = defaultColorCamera;
+            GameManager.Instance.player.GetComponent<SpriteRenderer>().color = GameManager.Instance.firstColor;
+            GameManager.Instance.AI.GetComponent<SpriteRenderer>().color = GameManager.Instance.firstColor;
+            paddleLeft.GetComponent<SpriteRenderer>().color = GameManager.Instance.firstColor;
+            paddleRight.GetComponent<SpriteRenderer>().color = GameManager.Instance.firstColor;
+            AIText.color = defaultColorText;
+            playerText.color = defaultColorText;
+            playerColorScript.count = 1;
+            gameLosePointUI.SetActive(false);
             isLookingForInput = false;
-            GameLose();
+            GameReset();
         }
     }
 
-    void ChangeProfileWin()
+    IEnumerator ChangeProfileWin()
     {
-        displayText = !displayText;
-        if (displayText)
-        { 
-            gameWinUI.SetActive(true);
-            isLookingForInput = true;
-        }
-        else
-        {
-            gameWinUI.SetActive(false);
-            isLookingForInput = false;
-            GameLose();
-        }
+
+        gameWinPointUI.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+
+        gameWinPointUI.SetActive(false);
+        GameReset();
+
     }
 
     public void GameWin(string winner)
@@ -107,8 +136,8 @@ public class UIManager : MonoBehaviour
             aiScore++;
             UpdateScore();
             if (aiScore >= winScore)
-            {              
-                Debug.Log("AI Wins");
+            {
+                GameLost(true);
             }
             else
             {
@@ -121,15 +150,35 @@ public class UIManager : MonoBehaviour
             UpdateScore();
             if (playerScore >= winScore)
             {
-                PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel") + 1);
-                Debug.Log("Player Wins");
+                if (PlayerPrefs.GetInt("currentLevel", 17) > 1)
+                {
+                    PlayerPrefs.SetInt("currentLevel", (PlayerPrefs.GetInt("currentLevel", 17) - 1));
+                    Debug.Log(PlayerPrefs.GetInt("currentLevel"));
+                }
+                GameLost(false);
             }
             else
             {
-                ChangeProfileWin();
+                StartCoroutine(ChangeProfileWin());
             }
         }
 
+    }
+
+    void GameLost(bool playerLost)
+    {
+        main.cullingMask = UI;
+        inGameUI.SetActive(false);
+        if (playerLost)
+        {
+            main.backgroundColor = GameLoseBackgroundColor;
+            gameOverUI.SetActive(true);
+        }
+        else
+        {
+            main.backgroundColor = GameWinBackgroundColor;
+            gameWinUI.SetActive(true);
+        }
     }
 
     public void GameWinEndless()
@@ -145,7 +194,7 @@ public class UIManager : MonoBehaviour
             playerText.text = playerScore.ToString();
     }
 
-    public void GameLose()
+    public void GameReset()
     {
         GameManager.Instance.rally = 0;
         GameManager.Instance.Reference();
@@ -168,6 +217,11 @@ public class UIManager : MonoBehaviour
     }
 
     public void LevelLoad(int level)
+    {
+        SceneManager.LoadScene(level);
+    }
+
+    public void LevelLoad(string level)
     {
         SceneManager.LoadScene(level);
     }

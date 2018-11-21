@@ -519,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -39.78}
   m_SizeDelta: {x: 672, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286518056
@@ -2508,6 +2508,7 @@ MonoBehaviour:
   inGameUI: {fileID: 1368998666}
   pauseUI: {fileID: 1483447226}
   gameOverUI: {fileID: 0}
+  gameWinUI: {fileID: 0}
   playerScore: 0
   aiScore: 0
   AIText: {fileID: 286518056}

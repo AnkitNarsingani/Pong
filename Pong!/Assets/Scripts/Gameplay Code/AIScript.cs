@@ -8,7 +8,7 @@ public class AIScript : MonoBehaviour
     [HideInInspector]
     public GameObject ball;
 
-    public float moveSpeed = 5f;
+    public float moveSpeed;
     float colorWaitTime = 0.5f;
 
     SpriteRenderer sr;
@@ -37,7 +37,7 @@ public class AIScript : MonoBehaviour
             if (GameManager.Instance.goingUp && canMove)
             {
                 //Going Left
-                if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -1.68f)
+                if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -1.95f)
                     transform.localPosition += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
                     
                 //Going Right

@@ -12,7 +12,7 @@ class GameManager : MonoBehaviour
     public GameObject player, AI;
 
     [SerializeField]
-    GameObject circle;
+    public GameObject circle;
 
     GameObject ball;
 
@@ -40,11 +40,11 @@ class GameManager : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetInt("isLeftHanded") == 1)
+        if(PlayerPrefs.GetInt("isLeftHanded", 1) == 1)
         {
             isLeftHanded = true;
         }
-        else if(PlayerPrefs.GetInt("isLeftHanded") == 0)
+        else
         {
             isLeftHanded = false;
         }

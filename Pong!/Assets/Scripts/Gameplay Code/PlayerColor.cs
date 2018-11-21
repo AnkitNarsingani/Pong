@@ -5,7 +5,8 @@ public class PlayerColor : MonoBehaviour
     [SerializeField]
     SpriteRenderer srPlayer, srPaddleLeft, srPaddleRight;
 
-    private int count = 0;
+    [HideInInspector]
+    public int count = 0;
 
     [HideInInspector]
     public Color currentColor;

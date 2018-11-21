@@ -7,12 +7,34 @@ public class GameManagerSetup : MonoBehaviour
     [SerializeField]
     Color[] levelColor;
 
-    void ColorSetup()
+    int currentLevel;
+
+    [SerializeField]
+    GameObject ballNormal, ballEndless;
+
+    private void Start()
     {
-        int currentLevel = PlayerPrefs.GetInt("currentLevel", 1);
-        int i = (3 * currentLevel) - 1;
-        GameManager.Instance.thirdColor = levelColor[i--];
-        GameManager.Instance.secondColor = levelColor[i--];
-        GameManager.Instance.firstColor = levelColor[i];
+        currentLevel = MenuManager.Instance.currentLevelNo;
+        ColorSetup();
     }
+
+    void ColorSetup()
+    { 
+        int i = (3 * currentLevel) - 1;
+        GameManager.Instance.firstColor = levelColor[i--];
+        GameManager.Instance.secondColor = levelColor[i--];
+        GameManager.Instance.thirdColor = levelColor[i];
+    }
+
+    public void OnTouchPlay()
+    {
+        GameManager.Instance.circle = ballNormal;
+    }
+
+    public void OnTouchEndless()
+    {
+        GameManager.Instance.circle = ballEndless;
+    }
+
+    
 }
