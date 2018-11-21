@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour {
     Text nextLevelName;
 
     [SerializeField]
-    Image faceSprite;
+    RectTransform facePos;
 
     [SerializeField]
     string Column3 = "Endless Mode";
@@ -54,6 +54,7 @@ public class MenuManager : MonoBehaviour {
 
     [SerializeField]
     Color yellow;
+
     [SerializeField]
     RectTransform baby, levelNameTextRect;
 
@@ -64,7 +65,13 @@ public class MenuManager : MonoBehaviour {
     Image face;
 
     [SerializeField]
+    GameObject cards;
+
+    [SerializeField]
     Sprite[] levelSprites;
+
+    [SerializeField]
+    GameObject[] levelPrefabs;
 
     [SerializeField]
     string[] levelName;
@@ -136,7 +143,9 @@ public class MenuManager : MonoBehaviour {
         levelNameText.text = currentLevelName;
         string[] t = currentLevelName.Split(' ');
         nextLevelName.text = currentLevelNo.ToString() + "." + "\n" + t[0] + "\n" + t[1];
-        faceSprite.overrideSprite = levelSprites[currentLevelNo - 1];
+        GameObject g =  Instantiate(levelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
+        g.transform.SetParent(cards.transform);
+        g.GetComponent<RectTransform>().position = facePos.position;
         face.overrideSprite = levelSprites[currentLevelNo - 1];
 
     }
