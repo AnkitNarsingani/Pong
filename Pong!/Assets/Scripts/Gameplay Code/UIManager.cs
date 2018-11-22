@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance { get; private set; }
 
+    public Gradient firstGradient, secondGradient, thirdGradient;
+
     [SerializeField]
     GameObject inGameUI, pauseUI, gameLosePointUI, gameWinPointUI, gameOverUI, gameWinUI;
 

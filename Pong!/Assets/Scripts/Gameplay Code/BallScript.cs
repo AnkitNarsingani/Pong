@@ -14,14 +14,24 @@ public class BallScript : MonoBehaviour
     [SerializeField]
     Sprite ballBoundaries, ballNoBoundaries;
 
+    Gradient firstGradient, secondGradient, thirdGradient;
+
+    TrailRenderer tr;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        tr = GetComponent<TrailRenderer>();
     }
     void Start()
     {
         GameManager.Instance.goingUp = true;
+
+        firstGradient = UIManager.Instance.firstGradient;
+        secondGradient = UIManager.Instance.secondGradient;
+        thirdGradient = UIManager.Instance.thirdGradient;
+
         UpdateColor();
 
         force.x = Random.Range(5, -6);
@@ -38,8 +48,19 @@ public class BallScript : MonoBehaviour
     {
         Color thisBallColor = GameManager.Instance.GenerateRandomColor();
         sr.color = thisBallColor;
+        tr.colorGradient = UpdateGradient(thisBallColor);
         GameManager.Instance.player.GetComponentInParent<PlayerColor>().currentColor = thisBallColor;
         GameManager.Instance.AI.GetComponent<AIScript>().currentColor = thisBallColor;
+    }
+
+    Gradient UpdateGradient(Color c)
+    {
+        if (c == GameManager.Instance.firstColor)
+            return firstGradient;
+        else if (c == GameManager.Instance.secondColor)
+            return secondGradient;
+        else
+            return thirdGradient;
     }
 
     IEnumerator StartRally()
@@ -66,7 +87,7 @@ public class BallScript : MonoBehaviour
                 GameManager.Instance.rally++;
                 GameManager.Instance.goingUp = true;
                 UpdateColor();
-                GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();   
+                GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
                 timer = 0;
             }
         }
@@ -100,7 +121,7 @@ public class BallScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(sr.color == collision.gameObject.GetComponent<SpriteRenderer>().color)
+        if (sr.color == collision.gameObject.GetComponent<SpriteRenderer>().color)
             sr.sprite = ballBoundaries;
     }
 
