@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 8821b2f01bb1bad4eb04cb149ef3fb09
   - enabled: 1
     path: Assets/Scenes/Level 17.unity
     guid: 490e66c5df0fee64d8bd6cb60a2413c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 16.unity
     guid: 7f68a3478e25c4b45bfaa892f12c32e5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Endless Rally.unity
     guid: f4c88572d783d4f4fba77425cd14f492
