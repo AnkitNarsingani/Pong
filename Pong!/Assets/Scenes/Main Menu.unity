@@ -1743,7 +1743,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 04f04324d1c45ae41a0169d82227539b, type: 3}
   - {fileID: 21300000, guid: 19c1f93a6d03b584781f3a7f3115f141, type: 3}
   - {fileID: 21300000, guid: e3ef2f0c9683b1d4eb165edde1410601, type: 3}
   levelPrefabs:
@@ -1761,7 +1761,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1307528910981986, guid: 8b8949769c725d242861d27ea260abd7, type: 2}
   - {fileID: 1981286125630444, guid: bd7079bb6e8fc8547a7adab5e1ba0269, type: 2}
   - {fileID: 1960759952172536, guid: 3ae2dedaa92ac9c41ab1c6da62811d99, type: 2}
   levelName:
@@ -3089,7 +3089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1441062382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4227,7 +4227,7 @@ GameObject:
   - component: {fileID: 2012725249}
   - component: {fileID: 2012725248}
   m_Layer: 5
-  m_Name: Baby Face
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4249,8 +4249,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25.00003}
-  m_SizeDelta: {x: 349.7, y: 147.2}
+  m_AnchoredPosition: {x: -0.000041962, y: 0.000025272}
+  m_SizeDelta: {x: 477.2, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2012725248
 MonoBehaviour:
@@ -4272,7 +4272,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5bdb1a0706162844a84c6653d569e493, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04f04324d1c45ae41a0169d82227539b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4367,7 +4367,7 @@ GameObject:
   - component: {fileID: 2105827641}
   - component: {fileID: 2105827640}
   m_Layer: 5
-  m_Name: Baby
+  m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
