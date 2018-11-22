@@ -74,7 +74,7 @@ public class AIScript : MonoBehaviour
         }
 
         if (GameManager.Instance.rally > SceneManager.GetActiveScene().buildIndex + 4)
-            moveSpeed = 3.5f;
+            moveSpeed = 3f;
 
         if (sr.color == currentColor && GameManager.Instance.goingUp)
             yield return new WaitForEndOfFrame();

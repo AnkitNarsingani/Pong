@@ -100,7 +100,14 @@ public class BallScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        sr.sprite = ballBoundaries;
+        if(sr.color == collision.gameObject.GetComponent<SpriteRenderer>().color)
+            sr.sprite = ballBoundaries;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (sr.color == collision.gameObject.GetComponent<SpriteRenderer>().color)
+            sr.sprite = ballBoundaries;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

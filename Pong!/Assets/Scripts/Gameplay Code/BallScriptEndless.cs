@@ -85,8 +85,14 @@ public class BallScriptEndless : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (sr.color == collision.gameObject.GetComponent<SpriteRenderer>().color)
+            sr.sprite = ballBoundaries;
+    }
 
-        sr.sprite = ballBoundaries;
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (sr.color == collision.gameObject.GetComponent<SpriteRenderer>().color)
+            sr.sprite = ballBoundaries;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

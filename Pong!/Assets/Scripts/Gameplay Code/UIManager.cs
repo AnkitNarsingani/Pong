@@ -158,7 +158,6 @@ public class UIManager : MonoBehaviour
                 if (PlayerPrefs.GetInt("currentLevel", 17) > 1)
                 {
                     PlayerPrefs.SetInt("currentLevel", (PlayerPrefs.GetInt("currentLevel", 17) - 1));
-                    Debug.Log(PlayerPrefs.GetInt("currentLevel"));
                 }
                 GameLost(false);
             }
@@ -226,6 +225,12 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
             pauseUI.SetActive(false);
         }
+    }
+    public void OnTouchGo(string level)
+    {
+        GameManager.Instance.shouldLoadNextScene = true;
+        GameManager.Instance.rally = 0;
+        LevelLoad("Main Menu");
     }
 
     public void LevelLoad(int level)

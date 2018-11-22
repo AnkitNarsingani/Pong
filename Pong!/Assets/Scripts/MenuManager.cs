@@ -48,6 +48,9 @@ public class MenuManager : MonoBehaviour {
     Sprite currentLevelSprite;
 
     [SerializeField]
+    GameObject cards;
+
+    [SerializeField]
     string Column4 = "Start UI";
 
     bool shouldPlayanim = false;
@@ -56,22 +59,19 @@ public class MenuManager : MonoBehaviour {
     Color yellow;
 
     [SerializeField]
-    RectTransform baby, levelNameTextRect;
+    RectTransform aIImageRect, levelNameTextRect;
 
     [SerializeField]
     Text levelNumber, levelNameText;
 
     [SerializeField]
-    Image face;
-
-    [SerializeField]
-    GameObject cards;
+    RectTransform swapPos; 
 
     [SerializeField]
     Sprite[] levelSprites;
 
     [SerializeField]
-    GameObject[] levelPrefabs;
+    GameObject[] levelPrefabs, StartlevelPrefabs;
 
     [SerializeField]
     string[] levelName;
@@ -95,6 +95,13 @@ public class MenuManager : MonoBehaviour {
     void Start ()
     {
         Time.timeScale = 1;
+
+        if(GameManager.Instance.shouldLoadNextScene)
+        {
+            GetComponent<GameManagerSetup>().ColorSetup();
+            OnTouchPlay();
+            GameManager.Instance.shouldLoadNextScene = false;
+        }
 
         if (GameManager.Instance.isLeftHanded)
         {
@@ -120,9 +127,9 @@ public class MenuManager : MonoBehaviour {
     {
 		if(shouldPlayanim)
         {
-            if (baby.localPosition.x < -27)
+            if (aIImageRect.localPosition.x < -27)
             {
-                baby.localPosition += new Vector3(43, 0, 0);
+                aIImageRect.localPosition += new Vector3(43, 0, 0);
             }               
             if(levelNameTextRect.localPosition.x > 17)
             {
@@ -130,9 +137,9 @@ public class MenuManager : MonoBehaviour {
             }
         }
 
-        if (levelNameTextRect.localPosition.x < 19 && baby.localPosition.x > -18 && !shouldPlayanim)
+        if (levelNameTextRect.localPosition.x < 19 && aIImageRect.localPosition.x > -18 && !shouldPlayanim)
         {
-            baby.localPosition += new Vector3(43, 0, 0);
+            aIImageRect.localPosition += new Vector3(43, 0, 0);
             levelNameTextRect.localPosition -= new Vector3(43, 0, 0);
         }
     }
@@ -143,11 +150,17 @@ public class MenuManager : MonoBehaviour {
         levelNameText.text = currentLevelName;
         string[] t = currentLevelName.Split(' ');
         nextLevelName.text = currentLevelNo.ToString() + "." + "\n" + t[0] + "\n" + t[1];
+
         GameObject g =  Instantiate(levelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
         g.transform.SetParent(cards.transform);
         g.GetComponent<RectTransform>().position = facePos.position;
-        face.overrideSprite = levelSprites[currentLevelNo - 1];
 
+        startUI.SetActive(true);
+        GameObject temp = Instantiate(StartlevelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
+        temp.transform.SetParent(startUI.transform);
+        temp.GetComponent<RectTransform>().position = swapPos.position;
+        aIImageRect = temp.GetComponent<RectTransform>();
+        startUI.SetActive(false);
     }
 
     public void OnTouchHand()

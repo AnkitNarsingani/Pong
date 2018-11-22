@@ -18,7 +18,7 @@ public class GameManagerSetup : MonoBehaviour
         ColorSetup();
     }
 
-    void ColorSetup()
+    public void ColorSetup()
     { 
         int i = (3 * currentLevel) - 1;
         GameManager.Instance.firstColor = levelColor[i--];

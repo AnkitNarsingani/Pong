@@ -23,6 +23,8 @@ public class PlayerColor : MonoBehaviour
             srPaddleLeft.gameObject.SetActive(false);
             srPaddleRight.gameObject.SetActive(true);
         }
+
+        OnTouchDown(Vector3.one);
     }
 
     public void OnTouchDown(Vector3 point)

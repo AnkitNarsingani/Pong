@@ -25,6 +25,9 @@ class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isLeftHanded;
 
+    [HideInInspector]
+    public bool shouldLoadNextScene = false;
+
     void Awake()
     {
         if (Instance == null)
