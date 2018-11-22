@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: -5, y: 20}
-  ballBoundaries: {fileID: 21300000, guid: 5bdb1a0706162844a84c6653d569e493, type: 3}
+  ballBoundaries: {fileID: 21300000, guid: 8b4378321f07e1f4aace0c4d3e44d786, type: 3}
   ballNoBoundaries: {fileID: 21300000, guid: 5147f15ecae95074bb3fdd9a9d598d1d, type: 3}
 --- !u!212 &212930477717592508
 SpriteRenderer:
