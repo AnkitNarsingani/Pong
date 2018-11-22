@@ -34,5 +34,7 @@ public class GameManagerSetup : MonoBehaviour
     public void OnTouchEndless()
     {
         GameManager.Instance.circle = ballEndless;
-    }   
+    }
+
+    
 }
