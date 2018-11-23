@@ -14,7 +14,7 @@ public class GameManagerSetup : MonoBehaviour
 
     private void Start()
     {
-        currentLevel = MenuManager.Instance.currentLevelNo;
+        currentLevel = PlayerPrefs.GetInt("currentLevel", 17);
         ColorSetup();
     }
 

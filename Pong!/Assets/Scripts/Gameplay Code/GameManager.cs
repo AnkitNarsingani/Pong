@@ -43,7 +43,7 @@ class GameManager : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetInt("isLeftHanded", 1) == 1)
+        if (PlayerPrefs.GetInt("isLeftHanded", 1) == 1)
         {
             isLeftHanded = true;
         }
@@ -55,7 +55,7 @@ class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void UpdateSettings()

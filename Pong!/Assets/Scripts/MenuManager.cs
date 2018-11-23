@@ -58,7 +58,6 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     Color yellow;
 
-    [SerializeField]
     RectTransform aIImageRect, levelNameTextRect;
 
     [SerializeField]
@@ -89,18 +88,26 @@ public class MenuManager : MonoBehaviour {
 
         currentLevelNo = PlayerPrefs.GetInt("currentLevel", 17);
         currentLevelName = levelName[currentLevelNo - 1];
-        SetUI();
+        endlessHighScore.text = PlayerPrefs.GetInt("maxRallies").ToString();
     }
 
     void Start ()
     {
+
+        levelNameTextRect = levelNameText.GetComponent<RectTransform>();
+
         Time.timeScale = 1;
 
         if(GameManager.Instance.shouldLoadNextScene)
         {
+            SetUI();
             GetComponent<GameManagerSetup>().ColorSetup();
             OnTouchPlay();
             GameManager.Instance.shouldLoadNextScene = false;
+        }
+        else
+        {
+            SetUI();
         }
 
         if (GameManager.Instance.isLeftHanded)
@@ -114,12 +121,7 @@ public class MenuManager : MonoBehaviour {
             anim.Play("Slide Right");
             leftHanded.color = Color.white;
             rightHanded.color = Color.black;
-        }
-
-        endlessHighScore.text = PlayerPrefs.GetInt("maxRallies").ToString();
-        currentLevelNo = PlayerPrefs.GetInt("currentLevel", 17);
-        currentLevelName = levelName[currentLevelNo - 1];
-        SetUI();
+        }     
     }
 	
 
@@ -154,12 +156,14 @@ public class MenuManager : MonoBehaviour {
         GameObject g =  Instantiate(levelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
         g.transform.SetParent(cards.transform);
         g.GetComponent<RectTransform>().position = facePos.position;
+        g.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
         startUI.SetActive(true);
         GameObject temp = Instantiate(StartlevelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
         temp.transform.SetParent(startUI.transform);
         temp.GetComponent<RectTransform>().position = swapPos.position;
         aIImageRect = temp.GetComponent<RectTransform>();
+        aIImageRect.localScale = new Vector3(1, 1, 1);
         startUI.SetActive(false);
     }
 
