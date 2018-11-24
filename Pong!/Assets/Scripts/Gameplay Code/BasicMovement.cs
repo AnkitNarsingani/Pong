@@ -13,8 +13,8 @@ public class BasicMovement : MonoBehaviour
 
     void Update()
     {
-        if (bob.position.x < -1.68f)
-            bob.position = new Vector3(-1.68f, bob.position.y, bob.position.z);
+        if (bob.position.x < -1.95f)
+            bob.position = new Vector3(-1.95f, bob.position.y, bob.position.z);
         if (bob.position.x > 1.95f)
             bob.position = new Vector3(1.95f, bob.position.y, bob.position.z);
 

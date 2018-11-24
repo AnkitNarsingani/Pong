@@ -64,13 +64,10 @@ public class MenuManager : MonoBehaviour {
     Text levelNumber, levelNameText;
 
     [SerializeField]
-    RectTransform swapPos; 
+    RectTransform swapPos;
 
     [SerializeField]
-    Sprite[] levelSprites;
-
-    [SerializeField]
-    GameObject[] levelPrefabs, StartlevelPrefabs;
+    GameObject[] levelPrefabs, StartLevelPrefabs;
 
     [SerializeField]
     string[] levelName;
@@ -159,7 +156,7 @@ public class MenuManager : MonoBehaviour {
         g.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
         startUI.SetActive(true);
-        GameObject temp = Instantiate(StartlevelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
+        GameObject temp = Instantiate(StartLevelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
         temp.transform.SetParent(startUI.transform);
         temp.GetComponent<RectTransform>().position = swapPos.position;
         aIImageRect = temp.GetComponent<RectTransform>();

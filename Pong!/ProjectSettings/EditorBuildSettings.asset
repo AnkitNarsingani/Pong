@@ -15,5 +15,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 16.unity
     guid: 7f68a3478e25c4b45bfaa892f12c32e5
   - enabled: 1
+    path: Assets/Scenes/Level 15.unity
+    guid: d2b87ffb5e411ea46af004fe53bf1dec
+  - enabled: 1
+    path: Assets/Scenes/Level 14.unity
+    guid: 2b409162fcca8c64892ae91f8bdb7a74
+  - enabled: 1
+    path: Assets/Scenes/Level 13.unity
+    guid: 1a284926999c61f4daf026cd72927bcc
+  - enabled: 1
     path: Assets/Scenes/Endless Rally.unity
     guid: f4c88572d783d4f4fba77425cd14f492

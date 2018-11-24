@@ -178,6 +178,7 @@ public class UIManager : MonoBehaviour
         if (playerLost)
         {
             main.backgroundColor = GameLoseBackgroundColor;
+            GameManager.Instance.rally = 0;
             gameOverUI.SetActive(true);
         }
         else

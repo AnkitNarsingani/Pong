@@ -77,15 +77,18 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -107,6 +110,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &14341767
 GameObject:
@@ -1766,24 +1771,6 @@ MonoBehaviour:
   levelNumber: {fileID: 1584717290}
   levelNameText: {fileID: 1733175920}
   swapPos: {fileID: 260787962}
-  levelSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 21300000, guid: 04f04324d1c45ae41a0169d82227539b, type: 3}
-  - {fileID: 21300000, guid: 19c1f93a6d03b584781f3a7f3115f141, type: 3}
-  - {fileID: 21300000, guid: e3ef2f0c9683b1d4eb165edde1410601, type: 3}
   levelPrefabs:
   - {fileID: 0}
   - {fileID: 0}
@@ -1796,13 +1783,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1548951545750294, guid: a52a10740637d73468b3e2d822ff7507, type: 2}
+  - {fileID: 1571868124138306, guid: 5b90b5732ce55db4e9f9aee54649d647, type: 2}
+  - {fileID: 1376315013949608, guid: 9059ba3456ca98e478f367a3f16db904, type: 2}
   - {fileID: 1307528910981986, guid: 8b8949769c725d242861d27ea260abd7, type: 2}
   - {fileID: 1981286125630444, guid: bd7079bb6e8fc8547a7adab5e1ba0269, type: 2}
   - {fileID: 1960759952172536, guid: 3ae2dedaa92ac9c41ab1c6da62811d99, type: 2}
-  StartlevelPrefabs:
+  StartLevelPrefabs:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1814,9 +1801,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1081616706338832, guid: 012b1422d28494a43846a6cc005482d7, type: 2}
+  - {fileID: 1644536561136144, guid: a2dc3ebde9faa674e811f61f946b2911, type: 2}
+  - {fileID: 1376315013949608, guid: 17c228e82df71c34f9056260be56e687, type: 2}
   - {fileID: 1691717526652376, guid: 39816c8dda9edff4da2b2ce57a4af7c9, type: 2}
   - {fileID: 1845358083788412, guid: e7b32a316be59be4dac585e650cfd83b, type: 2}
   - {fileID: 1234673508921090, guid: aa1016fdfc41f924aaa825e8ab84cd91, type: 2}
@@ -4238,11 +4225,11 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!4 &1979330172
 Transform:
   m_ObjectHideFlags: 0
