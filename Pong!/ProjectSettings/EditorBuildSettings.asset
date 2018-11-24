@@ -24,5 +24,32 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 13.unity
     guid: 1a284926999c61f4daf026cd72927bcc
   - enabled: 1
+    path: Assets/Scenes/Level 12.unity
+    guid: 9b06c6cb896ea38468dfdfa18055a99e
+  - enabled: 1
+    path: Assets/Scenes/Level 11.unity
+    guid: 4e06d1563f985e742997bb20e53d9b0e
+  - enabled: 1
+    path: Assets/Scenes/Level 10.unity
+    guid: bda007fecd9327d4cab7c259c794bdea
+  - enabled: 1
+    path: Assets/Scenes/Level 9.unity
+    guid: d4aed29fa14fd654e85b87c90e6afb33
+  - enabled: 1
+    path: Assets/Scenes/Level 7.unity
+    guid: 4a5b85b0dc7be9b408d915f59f2cf72c
+  - enabled: 1
+    path: Assets/Scenes/Level 6.unity
+    guid: c9a15022e13db58418aa00328d05ed18
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: 1e4af6234c8eb6c4d9fd610ce3c3166a
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 5cf9d3993d0c4e84a937d32abf505158
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: b305b980d0cddc64699a8ecf2c31e823
+  - enabled: 1
     path: Assets/Scenes/Endless Rally.unity
     guid: f4c88572d783d4f4fba77425cd14f492
