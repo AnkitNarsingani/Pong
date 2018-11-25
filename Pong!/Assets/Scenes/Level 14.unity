@@ -77,18 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -110,8 +107,6 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-    debug:
-      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &30138064
 GameObject:
@@ -579,7 +574,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -595,7 +589,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -776,7 +769,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 90c8cb8b7e3d79143900f293d768c5c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b638a0914f67dfe4d855c0a872f0ed58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1251,7 +1244,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1267,7 +1259,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1426,7 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.41960788, b: 0.37254903, a: 1}
+  m_Color: {r: 1, g: 0.5441177, b: 0.7460913, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1696,14 +1687,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ebbcd0c814832b443906cadfd87f4ecb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1a417fe46204c34cbabdb1d96cfb048, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1945,7 +1936,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1961,7 +1951,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2014,8 +2003,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: -0.11001}
-  m_SizeDelta: {x: 326.4, y: 147.32}
+  m_AnchoredPosition: {x: -0.7, y: 1.06}
+  m_SizeDelta: {x: 329.08, y: 147.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812842332
 MonoBehaviour:
@@ -2037,7 +2026,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 488d043bb1498c247a11249a0132f54c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f17d1fb7fce02c41a6e0b466b74de70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2242,7 +2231,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2258,7 +2246,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -3094,7 +3081,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 0.9558824, b: 0.9558824, a: 1}
+  m_BackGroundColor: {r: 1, g: 0.9338235, b: 0.9338235, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3116,11 +3103,11 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!4 &1321081661
 Transform:
   m_ObjectHideFlags: 0
@@ -3302,7 +3289,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 90c8cb8b7e3d79143900f293d768c5c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b638a0914f67dfe4d855c0a872f0ed58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3434,7 +3421,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -3450,7 +3436,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -3797,7 +3782,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -3813,7 +3797,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -4754,8 +4737,8 @@ MonoBehaviour:
   AI: {fileID: 0}
   circle: {fileID: 1939642652725258, guid: f7679a4ec140c994fb3c10e69ef2cc81, type: 2}
   goingUp: 0
-  firstColor: {r: 0, g: 0.7490196, b: 0.95294124, a: 1}
-  secondColor: {r: 1, g: 0.41960788, b: 0.37254903, a: 1}
+  firstColor: {r: 0.42352942, g: 0.83137256, b: 1, a: 1}
+  secondColor: {r: 0.39607844, g: 0.49411765, b: 0.83137256, a: 1}
   thirdColor: {r: 1, g: 0.5441177, b: 0.7460913, a: 1}
   isLeftHanded: 1
   shouldLoadNextScene: 0
@@ -4875,7 +4858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.41960788, b: 0.37254903, a: 1}
+    key0: {r: 0.42352942, g: 0.83137256, b: 1, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 0.49803922}
     key2: {r: 1, g: 1, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4904,7 +4887,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 3
   secondGradient:
     serializedVersion: 2
-    key0: {r: 0.50980395, g: 0.85882354, b: 0.8117647, a: 1}
+    key0: {r: 0.39607844, g: 0.49411765, b: 0.83137256, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 0.6745098}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4933,7 +4916,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 3
   thirdGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.7176471, b: 0.3019608, a: 1}
+    key0: {r: 1, g: 0.5441177, b: 0.7460913, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 0.54901963}
     key2: {r: 1, g: 1, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4979,7 +4962,7 @@ MonoBehaviour:
   UI:
     serializedVersion: 2
     m_Bits: 32
-  GameLoseBackgroundColor: {r: 1, g: 0.41960788, b: 0.37254903, a: 1}
+  GameLoseBackgroundColor: {r: 1, g: 0.5441177, b: 0.7460913, a: 1}
   GameWinBackgroundColor: {r: 0, g: 0.7490196, b: 0.95294124, a: 1}
 --- !u!4 &2108478270
 Transform:
