@@ -250,9 +250,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '12.
+  m_Text: '9.
 
-    aquaboy?'
+    national
+
+    champion'
 --- !u!222 &123659260
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -924,7 +926,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '#1 fan'
+  m_Text: state best
 --- !u!222 &179503995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2026,7 +2028,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f05d815cdb25df43ae8c09241e3d629, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d156c4383a95b7468b4c12751c290ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2716,7 +2718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1222675683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4508,7 +4510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 13
+  m_Text: 10
 --- !u!222 &1820377732
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: ac0c255859fda5d408fe418857cb7b3d
-timeCreated: 1543213747
+guid: 59ff4708fab606e4bbb22cd33fe6c5a0
+timeCreated: 1543215110
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlayButtonAnim_0
-    21300002: PlayButtonAnim_1
+    21300000: WorldChampEyesAnim_0
+    21300002: WorldChampEyesAnim_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -85,29 +85,29 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayButtonAnim_0
+      name: WorldChampEyesAnim_0
       rect:
         serializedVersion: 2
-        x: 117
-        y: 414
-        width: 121
-        height: 127
+        x: 87
+        y: 476
+        width: 162
+        height: 73
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlayButtonAnim_1
+      name: WorldChampEyesAnim_1
       rect:
         serializedVersion: 2
-        x: 358
-        y: 420
-        width: 121
-        height: 127
+        x: 327
+        y: 476
+        width: 162
+        height: 73
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
