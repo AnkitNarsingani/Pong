@@ -14,7 +14,11 @@ public class Slider : MonoBehaviour
     [HideInInspector]
     public float swipeValue;
 
+    [HideInInspector]
     public int index = 2;
+
+    [SerializeField]
+    MenuDots menuDots;
 
     public float[] postions;
 
@@ -61,6 +65,7 @@ public class Slider : MonoBehaviour
                             if (index != 0)
                             {
                                 index--;
+                                menuDots.ChangeDots(index);
                                 canMove = true;
                             }
                         }
@@ -69,6 +74,7 @@ public class Slider : MonoBehaviour
                             if (index != 3)
                             {
                                 index++;
+                                menuDots.ChangeDots(index);
                                 canMove = true;
                             }
                         }

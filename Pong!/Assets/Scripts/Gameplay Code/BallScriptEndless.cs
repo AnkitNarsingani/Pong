@@ -54,7 +54,8 @@ public class BallScriptEndless : MonoBehaviour
             if (sr.color != collision.gameObject.GetComponent<SpriteRenderer>().color)
             {
                 Destroy(gameObject);
-                PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
+                if (PlayerPrefs.GetInt("maxRallies", 0) < UIManager.Instance.aiScore)
+                    PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
                 UIManager.Instance.GameLoseEndless();
             }
             else
@@ -78,7 +79,8 @@ public class BallScriptEndless : MonoBehaviour
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
-            PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
+            if (PlayerPrefs.GetInt("maxRallies", 0) < UIManager.Instance.aiScore)
+                PlayerPrefs.SetInt("maxRallies", UIManager.Instance.aiScore);
             UIManager.Instance.GameLoseEndless();
         }
     }
@@ -102,7 +104,7 @@ public class BallScriptEndless : MonoBehaviour
 
     Vector2 GetBallForce(float xForce)
     {
-        if(GameManager.Instance.goingUp)
+        if (GameManager.Instance.goingUp)
         {
             if (GameManager.Instance.rally <= 4)
             {
@@ -131,6 +133,6 @@ public class BallScriptEndless : MonoBehaviour
             {
                 return new Vector2(xForce * 3.5f, 8.5f);
             }
-        }     
+        }
     }
 }
