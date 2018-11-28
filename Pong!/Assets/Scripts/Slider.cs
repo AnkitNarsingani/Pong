@@ -1,33 +1,44 @@
 using UnityEngine;
+using System.Collections;
 
 public class Slider : MonoBehaviour
 {
     [HideInInspector]
-    public float minSwipeDistY = 100;
+    public float minSwipeDistY = 75;
 
     [HideInInspector]
-    public float minSwipeDistX = 100;
+    public float minSwipeDistX = 75;
 
     private Vector2 startPos;
 
     [HideInInspector]
     public float swipeValue;
 
-    int index = 0;
+    public int index = 2;
 
-    bool rightSwipe = false, leftSwipe = false;
+    public float[] postions;
 
-    private RectTransform rectTransform;
+    RectTransform rt;
 
-    float minMoveBounds;
+    bool canMove = false;
 
     private void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
+        rt = GetComponent<RectTransform>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (canMove)
+        {
+            rt.localPosition = new Vector3(Mathf.Lerp(rt.localPosition.x, postions[index], Time.deltaTime * 10), rt.localPosition.y, 0);
+            if (Mathf.Abs(rt.localPosition.x - postions[index]) < 1)
+                canMove = false;
+        }
     }
     void Update()
     {
-        if (Input.touchCount > 0 && !rightSwipe && !leftSwipe)
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.touches[0];
 
@@ -44,65 +55,26 @@ public class Slider : MonoBehaviour
                     if (swipeDistHorizontal > minSwipeDistX)
                     {
                         swipeValue = Mathf.Sign(touch.position.x - startPos.x);
-                        
+
                         if (swipeValue > 0)//right swipe
                         {
-                            SetBounds(false);
-                            rightSwipe = true;
+                            if (index != 0)
+                            {
+                                index--;
+                                canMove = true;
+                            }
                         }
                         else if (swipeValue < 0)//left swipe
                         {
-                            SetBounds(true);
-                            leftSwipe = true;
+                            if (index != 3)
+                            {
+                                index++;
+                                canMove = true;
+                            }
                         }
                     }
                     break;
             }
-        }
-
-        if(rightSwipe)
-        {
-            if (index >= -2 && index <= 1 && rectTransform.localPosition.x < minMoveBounds)
-                rectTransform.localPosition += new Vector3(1000 * Time.deltaTime, 0, 0);
-            else
-                rightSwipe = false;
-        }
-        else if(leftSwipe)
-        {
-            if (index >= -2 && index <= 1 && rectTransform.localPosition.x > minMoveBounds)
-                rectTransform.localPosition -= new Vector3(1000 * Time.deltaTime, 0, 0);
-            else
-                leftSwipe = false;
-        }
-    }
-
-    void SetBounds(bool increment)
-    {
-        if (increment)
-            index++;
-        else
-            index--;
-
-        switch(index)
-        {
-            case 2:
-                index = 1;
-                break;
-            case 1:
-                minMoveBounds = -3260f;
-                break;
-            case 0:
-                minMoveBounds = -1887f;
-                break;
-            case -1:
-                minMoveBounds = -513f;
-                break;
-            case -2:
-                minMoveBounds = 850f;
-                break;
-            case -3:
-                index = -2;
-                break;
         }
     }
 }

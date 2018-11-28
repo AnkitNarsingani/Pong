@@ -191,19 +191,19 @@ public class MenuManager : MonoBehaviour {
         leftHanded.GetComponentInParent<Button>().interactable = true;
     }
 
-    public void OnTouchAudio(Button button)
+    public void OnTouchAudio(Image image)
     {
         muted = !muted;
 
         if(muted)
         {
             AudioListener.volume = 0;
-            button.image.overrideSprite = unmuteSprite;
+            image.sprite = unmuteSprite;
         }
         else
         {
             AudioListener.volume = 1;
-            button.image.overrideSprite = muteSprite;
+            image.sprite = muteSprite;
         }
     }
 
