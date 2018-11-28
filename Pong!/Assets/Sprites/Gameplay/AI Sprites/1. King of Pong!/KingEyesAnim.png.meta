@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4977cbd0146c7ad40a24908542e117eb
-timeCreated: 1543427596
+guid: d5b10d586b6177149b1abd148d25a31b
+timeCreated: 1543424875
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ButtonEmptyAnim_0
-    21300002: ButtonEmptyAnim_1
+    21300000: KingEyesAnim_0
+    21300002: KingEyesAnim_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -85,13 +85,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonEmptyAnim_0
+      name: KingEyesAnim_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 305
-        width: 81
-        height: 70
+        x: 97
+        y: 476
+        width: 162
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,13 +99,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ButtonEmptyAnim_1
+      name: KingEyesAnim_1
       rect:
         serializedVersion: 2
-        x: 347
-        y: 310
-        width: 81
-        height: 70
+        x: 337
+        y: 476
+        width: 162
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

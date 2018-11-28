@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4977cbd0146c7ad40a24908542e117eb
-timeCreated: 1543427596
+guid: 407cb5556aef5fa44900993d484bd46d
+timeCreated: 1543424817
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ButtonEmptyAnim_0
-    21300002: ButtonEmptyAnim_1
+    21300000: YetiEyesAnim 1_0
+    21300002: YetiEyesAnim 1_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -85,13 +85,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonEmptyAnim_0
+      name: YetiEyesAnim 1_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 305
-        width: 81
-        height: 70
+        x: 87
+        y: 476
+        width: 162
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,13 +99,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ButtonEmptyAnim_1
+      name: YetiEyesAnim 1_1
       rect:
         serializedVersion: 2
-        x: 347
-        y: 310
-        width: 81
-        height: 70
+        x: 327
+        y: 476
+        width: 162
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
