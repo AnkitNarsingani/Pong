@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3cccc729d79e8484ba25059fc1f93f8e
-timeCreated: 1542819645
+timeCreated: 1543497636
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -88,12 +88,12 @@ TextureImporter:
       name: PauseResumeButtonAnim_0
       rect:
         serializedVersion: 2
-        x: 28
+        x: 30
         y: 415
-        width: 234
+        width: 232
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -102,12 +102,12 @@ TextureImporter:
       name: PauseResumeButtonAnim_1
       rect:
         serializedVersion: 2
-        x: 312
-        y: 415
-        width: 234
+        x: 314
+        y: 421
+        width: 232
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
