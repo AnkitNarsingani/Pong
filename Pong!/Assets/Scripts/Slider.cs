@@ -14,8 +14,11 @@ public class Slider : MonoBehaviour
     [HideInInspector]
     public float swipeValue;
 
-    [HideInInspector]
+    [SerializeField]
     public int index = 2;
+
+    [SerializeField]
+    int minValue = 0, maxValue = 3;
 
     [SerializeField]
     MenuDots menuDots;
@@ -62,19 +65,21 @@ public class Slider : MonoBehaviour
 
                         if (swipeValue > 0)//right swipe
                         {
-                            if (index != 0)
+                            if (index != minValue)
                             {
                                 index--;
-                                menuDots.ChangeDots(index);
+                                if (menuDots != null)
+                                    menuDots.ChangeDots(index);
                                 canMove = true;
                             }
                         }
-                        else if (swipeValue < 0)//left swipe
+                        else if (swipeValue < maxValue)//left swipe
                         {
                             if (index != 3)
                             {
                                 index++;
-                                menuDots.ChangeDots(index);
+                                if (menuDots != null)
+                                    menuDots.ChangeDots(index);
                                 canMove = true;
                             }
                         }
