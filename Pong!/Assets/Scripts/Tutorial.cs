@@ -36,7 +36,6 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         red = player.color;
-        StartCoroutine(ColorAnimation());
     }
 
     
@@ -58,7 +57,7 @@ public class Tutorial : MonoBehaviour
             player.color = red;
             if(player.rectTransform.localPosition.x > -665f && goingLeft)
             {
-                player.rectTransform.localPosition += new Vector3(-7f, 0, 0);
+                player.rectTransform.localPosition += new Vector3(-5f, 0, 0);
             }
             else
             {
@@ -66,15 +65,18 @@ public class Tutorial : MonoBehaviour
             }
             if (player.rectTransform.localPosition.x < -310f && !goingLeft)
             {
-                player.rectTransform.localPosition -= new Vector3(-7f, 0, 0);
+                player.rectTransform.localPosition -= new Vector3(-5f, 0, 0);
             }
             else
                 goingLeft = true;
                 
         }
     }
-
-    IEnumerator ColorAnimation()
+    public void StartCoroutines()
+    {
+        StartCoroutine(ColorAnimation());
+    }
+    public IEnumerator ColorAnimation()
     {
         ChangeDisplay();
         yield return new WaitForSeconds(4);
