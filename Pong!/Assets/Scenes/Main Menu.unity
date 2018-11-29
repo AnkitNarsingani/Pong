@@ -3352,7 +3352,7 @@ MonoBehaviour:
   - {fileID: 1845358083788412, guid: e7b32a316be59be4dac585e650cfd83b, type: 2}
   - {fileID: 1234673508921090, guid: aa1016fdfc41f924aaa825e8ab84cd91, type: 2}
   levelName:
-  - pong king
+  - king of pong!
   - alien
   - big foot
   - yeti
@@ -3363,8 +3363,8 @@ MonoBehaviour:
   - national champion
   - state best
   - cowgirl
-  - cool guy
-  - '#one fan'
+  - aquaboy
+  - '#1 fan'
   - science teacher
   - grumpy grandpa
   - smelly cat
