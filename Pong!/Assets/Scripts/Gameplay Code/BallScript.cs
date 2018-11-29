@@ -18,6 +18,11 @@ public class BallScript : MonoBehaviour
 
     TrailRenderer tr;
 
+    AudioSource audio;
+
+    [SerializeField]
+    AudioClip boing1, boing2;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +42,8 @@ public class BallScript : MonoBehaviour
         force.x = Random.Range(5, -6);
         GameManager.Instance.AI.GetComponent<AIScript>().StartColorChange();
         StartCoroutine(StartRally());
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -81,6 +88,17 @@ public class BallScript : MonoBehaviour
             }
             else
             {
+                int temp = Random.Range(1, 3);
+                if (temp == 1)
+                {
+                    audio.clip = boing1;
+                    audio.Play();
+                }
+                else
+                {
+                    audio.clip = boing2;
+                    audio.Play();
+                }
                 collision.gameObject.GetComponentInChildren<Animator>().Play("Player Hit");
                 float Xvelocity = transform.position.x - collision.transform.position.x;
                 rb.velocity = GetBallForce(Xvelocity);
@@ -100,6 +118,17 @@ public class BallScript : MonoBehaviour
             }
             else
             {
+                int temp = Random.Range(1, 3);
+                if (temp == 1)
+                {
+                    audio.clip = boing1;
+                    audio.Play();
+                }
+                else
+                {
+                    audio.clip = boing2;
+                    audio.Play();
+                }
                 float Xvelocity = transform.position.x - collision.transform.position.x;
                 collision.gameObject.GetComponentInChildren<Animator>().Play("Hit");
                 rb.velocity = -GetBallForce(-Xvelocity);

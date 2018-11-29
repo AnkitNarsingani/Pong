@@ -37,7 +37,6 @@ public class AudioManager : MonoBehaviour {
         while(theme.volume >= 0.2f)
         {
             theme.volume -= 0.01f;
-            Debug.Log(theme.volume);
         }
     }
 
