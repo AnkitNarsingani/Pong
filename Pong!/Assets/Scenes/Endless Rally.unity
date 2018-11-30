@@ -1126,7 +1126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1483447227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +1435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1816492664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1780,9 +1780,9 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   inGameUI: {fileID: 1368998666}
   pauseUI: {fileID: 0}
-  gameLosePointUI: {fileID: 1483447226}
+  gameLosePointUI: {fileID: 0}
   gameWinPointUI: {fileID: 0}
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 1816492663}
   gameWinUI: {fileID: 0}
   playerScore: 0
   aiScore: 0

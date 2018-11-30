@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     Color GameLoseBackgroundColor, GameWinBackgroundColor;
+ 
 
     private void Awake()
     {
@@ -88,7 +89,13 @@ public class UIManager : MonoBehaviour
         }
 
         if(endless)
+        {
             main.backgroundColor = Color.Lerp(main.backgroundColor, GameLoseBackgroundColor, Time.deltaTime);
+            var tempcolor = gameOverUI.GetComponent<Text>().color;
+            tempcolor.a = Mathf.Lerp(tempcolor.a, 1, Time.deltaTime * 1.2f);
+            gameOverUI.GetComponent<Text>().color = tempcolor;
+        }
+            
     }
 
     void ChangeProfileLost()
@@ -198,7 +205,7 @@ public class UIManager : MonoBehaviour
     {
         main.cullingMask = UI;
         endless = true;
-        gameLosePointUI.SetActive(true);
+        gameOverUI.SetActive(true);
     }
 
     void UpdateScore()
