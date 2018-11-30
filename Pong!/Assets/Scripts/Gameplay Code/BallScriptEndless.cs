@@ -43,7 +43,7 @@ public class BallScriptEndless : MonoBehaviour
     IEnumerator StartRally()
     {
         yield return new WaitForSeconds(2f);
-        rb.AddForce(force);
+        rb.AddForce(force * 1.5f);
         GameManager.Instance.goingUp = true;
     }
 
@@ -108,46 +108,46 @@ public class BallScriptEndless : MonoBehaviour
         {
             if (GameManager.Instance.rally <= 4)
             {
-                return new Vector2(xForce * 1f, 5.5f);
+                return new Vector2(xForce * 1f, 7f);
             }
             else if (GameManager.Instance.rally <= 8)
             {
-                return new Vector2(xForce * 1f, 7);
+                return new Vector2(xForce * 1f, 8.5f);
             }
             else if(GameManager.Instance.rally <= 12)
             {
-                return new Vector2(xForce * 1f, 8.5f);
+                return new Vector2(xForce * 1f, 10f);
             }
             else if (GameManager.Instance.rally <= 16)
             {
-                return new Vector2(xForce * 1f, 10f);
+                return new Vector2(xForce * 1f, 11.5f);
             }
             else
             {
-                return new Vector2(xForce * 1f, 11.5f);
+                return new Vector2(xForce * 1f, 13f);
             }
         }
         else
         {
             if (GameManager.Instance.rally <= 4)
             {
-                return new Vector2(xForce * 3.5f, 5.5f);
+                return new Vector2(xForce * 3.5f, 7f);
             }
             else if (GameManager.Instance.rally <= 8)
             {
-                return new Vector2(xForce * 3f, 7);
+                return new Vector2(xForce * 3f, 8.5f);
             }
             else if (GameManager.Instance.rally <= 12)
             {
-                return new Vector2(xForce * 2.5f, 8.5f);
+                return new Vector2(xForce * 2.5f, 10f);
             }
             else if (GameManager.Instance.rally <= 16)
             {
-                return new Vector2(xForce * 2f, 10f);
+                return new Vector2(xForce * 2f, 11.5f);
             }
             else
             {
-                return new Vector2(xForce * 1.5f, 11.5f);
+                return new Vector2(xForce * 1.5f, 13f);
             }
         }
     }
