@@ -229,7 +229,7 @@ public class UIManager : MonoBehaviour
             pauseUI.SetActive(false);
         }
     }
-    public void OnTouchGo(string level)
+    public void OnTouchGo()
     {
         GameManager.Instance.shouldLoadNextScene = true;
         GameManager.Instance.rally = 0;

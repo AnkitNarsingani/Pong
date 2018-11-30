@@ -73,9 +73,9 @@ public class Slider : MonoBehaviour
                                 canMove = true;
                             }
                         }
-                        else if (swipeValue < maxValue)//left swipe
+                        else if (swipeValue < 0)//left swipe
                         {
-                            if (index != 3)
+                            if (index != maxValue)
                             {
                                 index++;
                                 if (menuDots != null)

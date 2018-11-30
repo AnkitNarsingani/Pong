@@ -11,9 +11,12 @@ public class MenuDots : MonoBehaviour
     [SerializeField]
     Sprite highlighted, notHighlighted;
 
+    [SerializeField]
+    int totalDots;
+
     public void ChangeDots(int n)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < totalDots; i++)
         {
             if (i == n)
                 cards[i].overrideSprite = highlighted;
