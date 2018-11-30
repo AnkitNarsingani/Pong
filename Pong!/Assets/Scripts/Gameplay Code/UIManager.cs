@@ -33,7 +33,8 @@ public class UIManager : MonoBehaviour
 
     bool isLookingForInput = false;
 
-    bool endless = false;
+    [SerializeField]
+    public bool endless = false;
 
     [SerializeField]
     int winScore = 5;

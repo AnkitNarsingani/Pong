@@ -4,10 +4,10 @@ using System.Collections;
 public class Slider : MonoBehaviour
 {
     [HideInInspector]
-    public float minSwipeDistY = 75;
+    public float minSwipeDistY = 100;
 
     [HideInInspector]
-    public float minSwipeDistX = 75;
+    public float minSwipeDistX = 100;
 
     private Vector2 startPos;
 
@@ -45,7 +45,7 @@ public class Slider : MonoBehaviour
     }
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Time.timeSinceLevelLoad > 0.5f)
         {
             Touch touch = Input.touches[0];
 
@@ -85,7 +85,7 @@ public class Slider : MonoBehaviour
                         }
                     }
                     break;
-            }
+            }  
         }
     }
 }

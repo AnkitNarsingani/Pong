@@ -1584,8 +1584,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.583372, y: 4.6613407, z: 1}
-  m_Center: {x: 0.008597374, y: -2.997324, z: 0}
+  m_Size: {x: 6.583372, y: 7.5959654, z: 1}
+  m_Center: {x: 0.008597374, y: -1.5300117, z: 0}
 --- !u!114 &1860871827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1788,6 +1788,7 @@ MonoBehaviour:
   aiScore: 0
   AIText: {fileID: 286518056}
   playerText: {fileID: 0}
+  endless: 0
   winScore: 0
   loseColorCamera: {r: 0, g: 0, b: 0, a: 0}
   loseColorPlayer: {r: 0, g: 0, b: 0, a: 0}

@@ -28,7 +28,8 @@ public class BasicMovement : MonoBehaviour
 
     void OnTouchDown(Vector3 point)
     {
-
+        if (UIManager.Instance.endless && Input.touchCount > 0)
+            UIManager.Instance.LevelLoad("Main Menu");
     }
 
     void OnTouchMoved(Vector3 point)

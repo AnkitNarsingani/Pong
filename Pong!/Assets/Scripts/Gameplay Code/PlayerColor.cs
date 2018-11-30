@@ -13,7 +13,7 @@ public class PlayerColor : MonoBehaviour
 
     private void Start()
     {
-        if(GameManager.Instance.isLeftHanded)
+        if (GameManager.Instance.isLeftHanded)
         {
             srPaddleLeft.gameObject.SetActive(true);
             srPaddleRight.gameObject.SetActive(false);
@@ -29,7 +29,10 @@ public class PlayerColor : MonoBehaviour
 
     public void OnTouchDown(Vector3 point)
     {
-        if(Time.timeScale != 0)
+        if (UIManager.Instance.endless && Input.touchCount > 0)
+            UIManager.Instance.LevelLoad("Main Menu");
+
+        if (Time.timeScale != 0)
         {
             count++;
             switch (count)
@@ -51,6 +54,6 @@ public class PlayerColor : MonoBehaviour
                     srPaddleRight.color = GameManager.Instance.thirdColor;
                     break;
             }
-        }        
+        }
     }
 }
