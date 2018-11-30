@@ -198,7 +198,7 @@ public class UIManager : MonoBehaviour
     {
         main.cullingMask = UI;
         endless = true;
-        //gameLosePointUI.SetActive(true);
+        gameLosePointUI.SetActive(true);
     }
 
     void UpdateScore()

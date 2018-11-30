@@ -135,11 +135,19 @@ public class BallScriptEndless : MonoBehaviour
             }
             else if (GameManager.Instance.rally <= 8)
             {
-                return new Vector2(xForce * 3, 7);
+                return new Vector2(xForce * 3f, 7);
+            }
+            else if (GameManager.Instance.rally <= 12)
+            {
+                return new Vector2(xForce * 2.5f, 8.5f);
+            }
+            else if (GameManager.Instance.rally <= 16)
+            {
+                return new Vector2(xForce * 2f, 10f);
             }
             else
             {
-                return new Vector2(xForce * 3.5f, 8.5f);
+                return new Vector2(xForce * 1.5f, 11.5f);
             }
         }
     }
