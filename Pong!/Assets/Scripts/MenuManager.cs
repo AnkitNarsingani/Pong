@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour {
+public class MenuManager : MonoBehaviour
+{
 
     public static MenuManager Instance { get; private set; }
 
@@ -88,14 +89,14 @@ public class MenuManager : MonoBehaviour {
         endlessHighScore.text = PlayerPrefs.GetInt("maxRallies").ToString();
     }
 
-    void Start ()
+    void Start()
     {
 
         levelNameTextRect = levelNameText.GetComponent<RectTransform>();
 
         Time.timeScale = 1;
 
-        if(GameManager.Instance.shouldLoadNextScene)
+        if (GameManager.Instance.shouldLoadNextScene)
         {
             SetUI();
             GetComponent<GameManagerSetup>().ColorSetup();
@@ -118,19 +119,19 @@ public class MenuManager : MonoBehaviour {
             anim.Play("Slide Right");
             leftHanded.color = Color.white;
             rightHanded.color = Color.black;
-        }     
+        }
     }
-	
 
-	void Update ()
+
+    void Update()
     {
-		if(shouldPlayanim)
+        if (shouldPlayanim)
         {
             if (aIImageRect.localPosition.x < -27)
             {
                 aIImageRect.localPosition += new Vector3(43, 0, 0);
-            }               
-            if(levelNameTextRect.localPosition.x > 17)
+            }
+            if (levelNameTextRect.localPosition.x > 17)
             {
                 levelNameTextRect.localPosition -= new Vector3(43, 0, 0);
             }
@@ -147,10 +148,10 @@ public class MenuManager : MonoBehaviour {
     {
         levelNumber.text = currentLevelNo.ToString();
         levelNameText.text = currentLevelName;
-        string[] t = currentLevelName.Split(' ');
+        string[] t = new string[2];
+        t = currentLevelName.Split(' ');
         nextLevelName.text = currentLevelNo.ToString() + "." + "\n" + t[0] + "\n" + t[1];
-
-        GameObject g =  Instantiate(levelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
+        GameObject g = Instantiate(levelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;
         g.transform.SetParent(cards.transform);
         g.GetComponent<RectTransform>().position = facePos.position;
         g.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
@@ -168,7 +169,7 @@ public class MenuManager : MonoBehaviour {
     {
         GameManager.Instance.UpdateSettings();
 
-        if(GameManager.Instance.isLeftHanded)
+        if (GameManager.Instance.isLeftHanded)
         {
             anim.Play("Slide Left");
             StartCoroutine(ActivateButton(0.5f));
@@ -195,7 +196,7 @@ public class MenuManager : MonoBehaviour {
     {
         muted = !muted;
 
-        if(muted)
+        if (muted)
         {
             AudioListener.volume = 0;
             image.sprite = unmuteSprite;

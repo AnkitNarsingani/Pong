@@ -19,10 +19,17 @@ public class AIScript : MonoBehaviour
 
     private bool canMove = false;
 
+    float decreasedSpeed, increasedcolorWaitTime;
+
+    int rallytoWait;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         GameManager.Instance.Reference();
+        decreasedSpeed = moveSpeed - 1;
+        increasedcolorWaitTime = colorWaitTime + 0.15f;
+        rallytoWait = GetRallyWait();
     }
 
     void Update()
@@ -53,7 +60,7 @@ public class AIScript : MonoBehaviour
 
     public void StartColorChange()
     {
-        StartCoroutine(Changecolor());
+        StartCoroutine(Changecolor()); 
     }
 
     IEnumerator Changecolor()
@@ -73,8 +80,11 @@ public class AIScript : MonoBehaviour
                 break;
         }
 
-        if (GameManager.Instance.rally > SceneManager.GetActiveScene().buildIndex + 4)
-            moveSpeed = 3f;
+        if (GameManager.Instance.rally > (rallytoWait + 4))
+        {
+            moveSpeed = decreasedSpeed;
+            colorWaitTime = increasedcolorWaitTime;
+        }
 
         if (sr.color == currentColor && GameManager.Instance.goingUp)
             yield return new WaitForEndOfFrame();
@@ -85,5 +95,48 @@ public class AIScript : MonoBehaviour
             StartCoroutine(Changecolor());
         else
             canMove = true;            
+    }
+
+    int GetRallyWait()
+    {
+        switch (PlayerPrefs.GetInt("currentLevel", 17))
+        {
+            case 17:
+                return 1;
+            case 16:
+                return 2;
+            case 15:
+                return 3;
+            case 14:
+                return 4;
+            case 13:
+                return 5;
+            case 12:
+                return 6;
+            case 11:
+                return 7;
+            case 10:
+                return 8;
+            case 9:
+                return 9;
+            case 8:
+                return 10;
+            case 7:
+                return 11;
+            case 6:
+                return 12;
+            case 5:
+                return 13;
+            case 4:
+                return 14;
+            case 3:
+                return 15;
+            case 2:
+                return 16;
+            case 1:
+                return 17;
+            default:
+                return 2;
+        }
     }
 }

@@ -133,7 +133,7 @@ public class BallScriptEndless : MonoBehaviour
             }
             else
             {
-                return new Vector2(xForce * 1.5f, 8f);
+                return new Vector2(xForce * 2.5f, 8f);
             }
         }
     }
