@@ -85,6 +85,13 @@ public class AIScript : MonoBehaviour
             moveSpeed = decreasedSpeed;
             colorWaitTime = increasedcolorWaitTime;
         }
+        else
+        {
+            if (moveSpeed == decreasedSpeed)
+                moveSpeed += 1;
+            if (colorWaitTime == increasedcolorWaitTime)
+                colorWaitTime -= 0.15f;
+        }
 
         if (sr.color == currentColor && GameManager.Instance.goingUp)
             yield return new WaitForEndOfFrame();
