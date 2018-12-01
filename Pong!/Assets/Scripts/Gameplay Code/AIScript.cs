@@ -45,11 +45,11 @@ public class AIScript : MonoBehaviour
             {
                 //Going Left
                 if (transform.localPosition.x > ball.transform.localPosition.x && transform.localPosition.x > -1.95f)
-                    transform.localPosition += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
+                    transform.localPosition += new Vector3(-moveSpeed * Time.smoothDeltaTime, 0, 0);
                     
                 //Going Right
                 if (transform.localPosition.x < ball.transform.localPosition.x && transform.localPosition.x < 1.95f)
-                    transform.localPosition += new Vector3(moveSpeed * Time.deltaTime, 0, 0);     
+                    transform.localPosition += new Vector3(moveSpeed * Time.smoothDeltaTime, 0, 0);     
             }
             else if (!GameManager.Instance.goingUp)
             {
@@ -109,7 +109,7 @@ public class AIScript : MonoBehaviour
         switch (PlayerPrefs.GetInt("currentLevel", 17))
         {
             case 17:
-                return 1;
+                return 0;
             case 16:
                 return 2;
             case 15:
