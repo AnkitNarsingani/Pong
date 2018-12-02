@@ -29,7 +29,7 @@ public class AdManager : MonoBehaviour
     {
         if(Advertisement.isSupported && !Advertisement.isInitialized)
         {
-            Advertisement.Initialize("2943168", true);
+            Advertisement.Initialize("2943168", false);
             Debug.Log("Initialized");
         }
     }
