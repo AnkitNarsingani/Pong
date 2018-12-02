@@ -14,10 +14,16 @@ public class BallScriptEndless : MonoBehaviour
     [SerializeField]
     Sprite ballBoundaries, ballNoBoundaries;
 
+    new AudioSource audio;
+
+    [SerializeField]
+    AudioClip boing1, boing2;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        audio = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -60,6 +66,17 @@ public class BallScriptEndless : MonoBehaviour
             }
             else
             {
+                int temp = Random.Range(1, 3);
+                if (temp == 1)
+                {
+                    audio.clip = boing1;
+                    audio.Play();
+                }
+                else
+                {
+                    audio.clip = boing2;
+                    audio.Play();
+                }
                 collision.gameObject.GetComponentInChildren<Animator>().Play("Player Hit");
                 float Xvelocity = transform.position.x - collision.transform.position.x;
                 rb.velocity = GetBallForce(Xvelocity);
@@ -70,6 +87,17 @@ public class BallScriptEndless : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("AI") && timer >= 0.5f)
         {
+            int temp = Random.Range(1, 3);
+            if (temp == 1)
+            {
+                audio.clip = boing1;
+                audio.Play();
+            }
+            else
+            {
+                audio.clip = boing2;
+                audio.Play();
+            }
             float Xvelocity = transform.position.x - collision.transform.position.x;
             rb.velocity = -GetBallForce(-Xvelocity);
             UIManager.Instance.GameWinEndless();
