@@ -4966,8 +4966,8 @@ MonoBehaviour:
   UI:
     serializedVersion: 2
     m_Bits: 32
-  GameLoseBackgroundColor: {r: 0.21960784, g: 0.8745098, b: 0.827451, a: 1}
-  GameWinBackgroundColor: {r: 0.9372549, g: 0.7882353, b: 0.09411765, a: 1}
+  GameLoseBackgroundColor: {r: 1, g: 0.4156863, b: 0.3647059, a: 1}
+  GameWinBackgroundColor: {r: 0.9294118, g: 0.7843138, b: 0.09411766, a: 1}
 --- !u!4 &2108478270
 Transform:
   m_ObjectHideFlags: 0
