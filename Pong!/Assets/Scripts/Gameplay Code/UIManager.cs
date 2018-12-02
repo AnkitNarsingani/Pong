@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     Camera main;
 
     [SerializeField]
-    Text AIText, playerText;
+    public Text AIText, playerText;
 
     bool isGreyScale = false;
 
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
 
     bool isLookingForInput = false;
 
-    [SerializeField]
+    [HideInInspector]
     public bool endless = false;
 
     [SerializeField]
@@ -188,11 +188,13 @@ public class UIManager : MonoBehaviour
             main.backgroundColor = GameLoseBackgroundColor;
             GameManager.Instance.rally = 0;
             gameOverUI.SetActive(true);
+            AudioManager.Instance.Play("Gamelose");
         }
         else
         {
             main.backgroundColor = GameWinBackgroundColor;
             gameWinUI.SetActive(true);
+            AudioManager.Instance.Play("Gamewin");
         }
     }
 

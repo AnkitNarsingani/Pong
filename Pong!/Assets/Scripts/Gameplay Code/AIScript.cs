@@ -26,7 +26,8 @@ public class AIScript : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        GameManager.Instance.Reference();
+        if(!SceneManager.GetActiveScene().name.Equals("Tutorial"))
+            GameManager.Instance.Reference();
         decreasedSpeed = moveSpeed - 1;
         increasedcolorWaitTime = colorWaitTime + 0.15f;
         rallytoWait = GetRallyWait();

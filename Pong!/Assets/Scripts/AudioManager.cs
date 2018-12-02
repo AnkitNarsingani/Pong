@@ -32,11 +32,25 @@ public class AudioManager : MonoBehaviour {
 		
 	}
 
+    public void Play(string clip)
+    {
+        AudioSource[] temp = GetComponents<AudioSource>();
+
+        foreach (AudioSource a in temp)
+        {
+            if(a.clip.name == clip)
+            {
+                a.Play();
+                return;
+            }
+        }
+    }
+
     public void OnTouchVolumeDown()
     {
         while(theme.volume >= 0.2f)
         {
-            theme.volume -= 0.01f;
+            theme.volume -= 0.0001f;
         }
     }
 

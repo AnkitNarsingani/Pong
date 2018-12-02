@@ -91,6 +91,10 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        if(PlayerPrefs.GetInt("tutorial", 0) == 0 && PlayerPrefs.GetInt("currentLevel", 17) == 17)
+        {
+            LevelLoad("Tutorial");
+        }
 
         levelNameTextRect = levelNameText.GetComponent<RectTransform>();
 
