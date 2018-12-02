@@ -224,7 +224,7 @@ public class MenuManager : MonoBehaviour
         shouldPlayanim = false;
 
         yield return new WaitForSeconds(1f);
-        Debug.Log(currentLevelNo);
+
         LevelLoad(currentLevelNo - 1);
     }
 
