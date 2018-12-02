@@ -10,7 +10,6 @@ public class AdManager : MonoBehaviour
     public static AdManager Instance { get; private set; }
 
     string level;
-    int index = 0;
 
     private void Awake()
     {
@@ -27,7 +26,7 @@ public class AdManager : MonoBehaviour
 
     private void Start()
     {
-        if(Advertisement.isSupported && !Advertisement.isInitialized)
+        if (Advertisement.isSupported && !Advertisement.isInitialized)
         {
             Advertisement.Initialize("2943168", false);
             Debug.Log("Initialized");
@@ -49,13 +48,23 @@ public class AdManager : MonoBehaviour
         {
             Advertisement.Show("banner", new ShowOptions() { resultCallback = HandleResult });
         }
+        else if (Advertisement.IsReady("displaypicture"))
+        {
+            Advertisement.Show("displaypicture", new ShowOptions() { resultCallback = HandleResult });
+        }
+        else
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.LevelLoad(levelName);
+            else
+                MenuManager.Instance.LevelLoad(levelName);
+        }
     }
 
     public void ShowVideoAds()
     {
-        if (Advertisement.IsReady("video") && index < 5)
+        if (Advertisement.IsReady("video"))
         {
-            index++;
             Advertisement.Show("video");
         }
         else
@@ -66,9 +75,8 @@ public class AdManager : MonoBehaviour
     {
         level = levelName;
 
-        if (Advertisement.IsReady("video") && index < 5)
+        if (Advertisement.IsReady("video"))
         {
-            index++;
             Advertisement.Show("video", new ShowOptions() { resultCallback = HandleResult });
         }
         else
@@ -77,23 +85,39 @@ public class AdManager : MonoBehaviour
 
     public void ShowRewardedVideoAds()
     {
-        if (Advertisement.IsReady("rewardedvideo"))
+        if (Advertisement.IsReady("rewardedVideo"))
         {
             Advertisement.Show("rewardedVideo");
         }
+        else if (Advertisement.IsReady("displaypicture"))
+        {
+            Advertisement.Show("displaypicture", new ShowOptions() { resultCallback = HandleResult });
+        }
     }
 
-    public void ShowRewardedVideoAds(string levelname)
+    public void ShowRewardedVideoAds(string levelName)
     {
-        if (Advertisement.IsReady("rewardedvideo"))
+        level = levelName;
+        if (Advertisement.IsReady("rewardedVideo"))
         {
             Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleResult });
+        }
+        else if (Advertisement.IsReady("displaypicture"))
+        {
+            Advertisement.Show("displaypicture", new ShowOptions() { resultCallback = HandleResult });
+        }
+        else
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.LevelLoad(levelName);
+            else
+                MenuManager.Instance.LevelLoad(levelName);
         }
     }
 
     private void HandleResult(ShowResult showResult)
     {
-        if(Advertisement.isInitialized)
+        if (Advertisement.isInitialized)
         {
             switch (showResult)
             {
