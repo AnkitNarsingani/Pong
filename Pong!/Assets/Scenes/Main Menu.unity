@@ -3459,7 +3459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: match the player colour with the ball
+  m_Text: match the player color with the ball
 --- !u!222 &683339820
 CanvasRenderer:
   m_ObjectHideFlags: 0
