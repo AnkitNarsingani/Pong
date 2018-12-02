@@ -189,6 +189,8 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.rally = 0;
             gameOverUI.SetActive(true);
             AudioManager.Instance.Play("Gamelose");
+            AdManager.Instance.ShowRewardedVideoAds();
+
         }
         else
         {
@@ -243,7 +245,7 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.shouldLoadNextScene = true;
         GameManager.Instance.rally = 0;
-        LevelLoad("Main Menu");
+        AdManager.Instance.ShowVideoAds("Main Menu");
     }
 
     public void LevelLoad(int level)

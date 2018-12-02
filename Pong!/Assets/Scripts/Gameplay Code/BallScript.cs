@@ -17,8 +17,7 @@ public class BallScript : MonoBehaviour
     Gradient firstGradient, secondGradient, thirdGradient;
 
     TrailRenderer tr;
-
-    AudioSource audio;
+    new AudioSource audio;
 
     [SerializeField]
     AudioClip boing1, boing2;
