@@ -91,11 +91,6 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.GetInt("tutorial", 0) == 0 && PlayerPrefs.GetInt("currentLevel", 17) == 17)
-        {
-            LevelLoad("Tutorial");
-        }
-
         levelNameTextRect = levelNameText.GetComponent<RectTransform>();
 
         Time.timeScale = 1;
@@ -229,7 +224,10 @@ public class MenuManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        LevelLoad(currentLevelNo - 1);
+        if (PlayerPrefs.GetInt("tutorial", 0) == 0 && PlayerPrefs.GetInt("currentLevel", 17) == 17)
+            LevelLoad("Tutorial");
+        else
+            LevelLoad(currentLevelNo - 1);
     }
 
     public void LevelLoad(int level)

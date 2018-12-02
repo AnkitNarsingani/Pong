@@ -59,6 +59,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Endless Rally.unity
     guid: f4c88572d783d4f4fba77425cd14f492
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 96e16d4a5e9bcd74cad113a30dc1a66e

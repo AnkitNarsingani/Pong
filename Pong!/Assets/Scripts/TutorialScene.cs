@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +11,7 @@ public class TutorialScene : MonoBehaviour
     Transform player;
 
     [SerializeField]
-    GameObject thumbRight, thumbLeft, moveText, colorText, scoreText;
-
-    Transform initialPlayerPos;
+    GameObject thumbRight, thumbLeft, moveText, colorText, scoreText,fivePoint;
 
     [SerializeField]
     Text playerText, aiText;
@@ -23,7 +20,6 @@ public class TutorialScene : MonoBehaviour
 
     void Start()
     {
-        initialPlayerPos = player;
         movePlayerFinger = true;
         goingLeft = true;
         shrinking = false;
@@ -103,7 +99,6 @@ public class TutorialScene : MonoBehaviour
                 player.position -= new Vector3(-2.5f * Time.deltaTime, 0, 0);
             else
                 goingLeft = true;
-            initialPlayerPos = player;
         }
     }
 
@@ -116,5 +111,15 @@ public class TutorialScene : MonoBehaviour
         displayScore = false;
         aiText.rectTransform.localScale = new Vector3(1, 1, 1);
         playerText.rectTransform.localScale = new Vector3(1, 1, 1);
+        StartCoroutine(WinCondition());
+    }
+
+    IEnumerator WinCondition()
+    {
+        fivePoint.SetActive(true);
+        yield return new WaitForSeconds(6);
+        fivePoint.SetActive(false);
+        PlayerPrefs.SetInt("tutorial", 1);
+        UIManager.Instance.LevelLoad("Level 17");
     }
 }
