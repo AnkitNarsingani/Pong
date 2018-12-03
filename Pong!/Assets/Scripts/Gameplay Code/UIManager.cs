@@ -211,6 +211,7 @@ public class UIManager : MonoBehaviour
         main.cullingMask = UI;
         endless = true;
         gameOverUI.SetActive(true);
+        GameManager.Instance.rally = 0;
     }
 
     void UpdateScore()

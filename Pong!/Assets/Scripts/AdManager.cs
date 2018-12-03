@@ -26,7 +26,7 @@ public class AdManager : MonoBehaviour
 
     private void Start()
     {
-        if (Advertisement.isSupported && !Advertisement.isInitialized)
+        if (Advertisement.isSupported && !Advertisement.isInitialized && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Initialize("2943168", false);
             Debug.Log("Initialized");
