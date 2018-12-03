@@ -229,7 +229,7 @@ public class MenuManager : MonoBehaviour
         if (PlayerPrefs.GetInt("tutorial", 0) == 0 && PlayerPrefs.GetInt("currentLevel", 17) == 17)
             LevelLoad("Tutorial");
         else
-            LevelLoad(currentLevelNo - 1);
+            LevelLoad(currentLevelNo);
     }
 
     public void LevelLoad(int level)
