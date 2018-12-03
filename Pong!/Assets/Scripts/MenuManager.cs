@@ -26,6 +26,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     Sprite muteSprite, unmuteSprite;
 
+    [SerializeField]
+    Image muteButton;
+
     bool muted = false;
 
     [SerializeField]
@@ -95,7 +98,7 @@ public class MenuManager : MonoBehaviour
 
         Time.timeScale = 1;
 
-        
+
 
         if (GameManager.Instance.shouldLoadNextScene)
         {
@@ -156,6 +159,13 @@ public class MenuManager : MonoBehaviour
         g.transform.SetParent(cards.transform);
         g.GetComponent<RectTransform>().position = facePos.position;
         g.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        if (AudioListener.volume == 0)
+        {
+            muteButton.sprite = unmuteSprite;
+            muted = true;
+        }
+        else
+            muteButton.sprite = muteSprite;
 
         startUI.SetActive(true);
         GameObject temp = Instantiate(StartLevelPrefabs[currentLevelNo - 1], Vector3.one, Quaternion.identity) as GameObject;

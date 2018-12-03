@@ -19,7 +19,7 @@ public class AIScript : MonoBehaviour
 
     private bool canMove = false;
 
-    float decreasedSpeed, increasedcolorWaitTime;
+    float decreasedSpeed;
 
     int rallytoWait;
 
@@ -29,7 +29,6 @@ public class AIScript : MonoBehaviour
         if(!SceneManager.GetActiveScene().name.Equals("Tutorial"))
             GameManager.Instance.Reference();
         decreasedSpeed = moveSpeed - 1;
-        increasedcolorWaitTime = colorWaitTime + 0.15f;
         rallytoWait = GetRallyWait();
     }
 
@@ -84,14 +83,11 @@ public class AIScript : MonoBehaviour
         if (GameManager.Instance.rally > (rallytoWait + 4))
         {
             moveSpeed = decreasedSpeed;
-            colorWaitTime = increasedcolorWaitTime;
         }
         else
         {
             if (moveSpeed == decreasedSpeed)
                 moveSpeed += 1;
-            if (colorWaitTime == increasedcolorWaitTime)
-                colorWaitTime -= 0.15f;
         }
 
         if (sr.color == currentColor && GameManager.Instance.goingUp)
