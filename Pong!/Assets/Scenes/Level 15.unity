@@ -4740,8 +4740,8 @@ MonoBehaviour:
   circle: {fileID: 1939642652725258, guid: f7679a4ec140c994fb3c10e69ef2cc81, type: 2}
   goingUp: 0
   firstColor: {r: 0.9843138, g: 0.54509807, b: 0.68235296, a: 1}
-  secondColor: {r: 0.7490196, g: 0.8745099, b: 0.6156863, a: 1}
-  thirdColor: {r: 1, g: 0.7680106, b: 0.42647058, a: 1}
+  secondColor: {r: 0.6590122, g: 0.88235295, b: 0.4217128, a: 1}
+  thirdColor: {r: 1, g: 0.7085262, b: 0.2794118, a: 1}
   isLeftHanded: 1
   shouldLoadNextScene: 0
 --- !u!4 &1962496144

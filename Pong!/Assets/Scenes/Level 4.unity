@@ -4737,9 +4737,9 @@ MonoBehaviour:
   AI: {fileID: 0}
   circle: {fileID: 1939642652725258, guid: f7679a4ec140c994fb3c10e69ef2cc81, type: 2}
   goingUp: 0
-  firstColor: {r: 0.6985294, g: 0.9522423, b: 1, a: 1}
-  secondColor: {r: 0.26666668, g: 0.8, b: 1, a: 1}
-  thirdColor: {r: 0.21085638, g: 0.9558824, b: 0.8633964, a: 1}
+  firstColor: {r: 0.46323532, g: 0.914968, b: 1, a: 1}
+  secondColor: {r: 0, g: 0.7272725, b: 1, a: 1}
+  thirdColor: {r: 0, g: 0.9558824, b: 0.83722115, a: 1}
   isLeftHanded: 1
   shouldLoadNextScene: 0
 --- !u!4 &1962496144
