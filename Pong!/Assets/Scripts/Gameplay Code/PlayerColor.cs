@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerColor : MonoBehaviour
 {
     [SerializeField]
-    SpriteRenderer srPlayer, srPaddleLeft, srPaddleRight;
+    SpriteRenderer srPlayer, tempLeft , tempRight;
+
+    [SerializeField]
+    Image srPaddleLeft, srPaddleRight;
 
     [HideInInspector]
     public int count = 0;
@@ -17,11 +21,17 @@ public class PlayerColor : MonoBehaviour
         {
             srPaddleLeft.gameObject.SetActive(true);
             srPaddleRight.gameObject.SetActive(false);
+
+            tempLeft.gameObject.SetActive(true);
+            tempRight.gameObject.SetActive(false);
         }
         else
         {
             srPaddleLeft.gameObject.SetActive(false);
             srPaddleRight.gameObject.SetActive(true);
+
+            tempLeft.gameObject.SetActive(false);
+            tempRight.gameObject.SetActive(true);
         }
 
         OnTouchDown(Vector3.one);
@@ -41,17 +51,23 @@ public class PlayerColor : MonoBehaviour
                     srPlayer.color = GameManager.Instance.firstColor;
                     srPaddleLeft.color = GameManager.Instance.firstColor;
                     srPaddleRight.color = GameManager.Instance.firstColor;
+                    tempLeft.color = GameManager.Instance.firstColor;
+                    tempRight.color = GameManager.Instance.firstColor;
                     break;
                 case 2:
                     srPlayer.color = GameManager.Instance.secondColor;
                     srPaddleLeft.color = GameManager.Instance.secondColor;
                     srPaddleRight.color = GameManager.Instance.secondColor;
+                    tempLeft.color = GameManager.Instance.secondColor;
+                    tempRight.color = GameManager.Instance.secondColor;
                     break;
                 case 3:
                     count = 0;
                     srPlayer.color = GameManager.Instance.thirdColor;
                     srPaddleLeft.color = GameManager.Instance.thirdColor;
                     srPaddleRight.color = GameManager.Instance.thirdColor;
+                    tempLeft.color = GameManager.Instance.secondColor;
+                    tempRight.color = GameManager.Instance.secondColor;
                     break;
             }
         }

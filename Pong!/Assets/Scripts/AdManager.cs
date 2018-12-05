@@ -34,7 +34,7 @@ public class AdManager : MonoBehaviour
     }
     void ShowBannerAds()
     {
-        if (Advertisement.IsReady("banner"))
+        if (Advertisement.IsReady("banner") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("banner");
         }
@@ -44,11 +44,11 @@ public class AdManager : MonoBehaviour
     {
         level = levelName;
 
-        if (Advertisement.IsReady("banner"))
+        if (Advertisement.IsReady("banner") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("banner", new ShowOptions() { resultCallback = HandleResult });
         }
-        else if (Advertisement.IsReady("displaypicture"))
+        else if (Advertisement.IsReady("displaypicture") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("displaypicture", new ShowOptions() { resultCallback = HandleResult });
         }
@@ -63,7 +63,7 @@ public class AdManager : MonoBehaviour
 
     public void ShowVideoAds()
     {
-        if (Advertisement.IsReady("video"))
+        if (Advertisement.IsReady("video") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("video");
         }
@@ -75,7 +75,7 @@ public class AdManager : MonoBehaviour
     {
         level = levelName;
 
-        if (Advertisement.IsReady("video"))
+        if (Advertisement.IsReady("video") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("video", new ShowOptions() { resultCallback = HandleResult });
         }
@@ -85,11 +85,11 @@ public class AdManager : MonoBehaviour
 
     public void ShowRewardedVideoAds()
     {
-        if (Advertisement.IsReady("rewardedVideo"))
+        if (Advertisement.IsReady("rewardedVideo") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("rewardedVideo");
         }
-        else if (Advertisement.IsReady("displaypicture"))
+        else if (Advertisement.IsReady("displaypicture") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("displaypicture", new ShowOptions() { resultCallback = HandleResult });
         }
@@ -98,11 +98,11 @@ public class AdManager : MonoBehaviour
     public void ShowRewardedVideoAds(string levelName)
     {
         level = levelName;
-        if (Advertisement.IsReady("rewardedVideo"))
+        if (Advertisement.IsReady("rewardedVideo") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("rewardedVideo", new ShowOptions() { resultCallback = HandleResult });
         }
-        else if (Advertisement.IsReady("displaypicture"))
+        else if (Advertisement.IsReady("displaypicture") && !GameManager.Instance.hasPurchased)
         {
             Advertisement.Show("displaypicture", new ShowOptions() { resultCallback = HandleResult });
         }
@@ -117,7 +117,7 @@ public class AdManager : MonoBehaviour
 
     private void HandleResult(ShowResult showResult)
     {
-        if (Advertisement.isInitialized)
+        if (Advertisement.isInitialized && !GameManager.Instance.hasPurchased)
         {
             switch (showResult)
             {

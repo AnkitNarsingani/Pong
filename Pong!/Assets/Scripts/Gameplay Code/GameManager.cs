@@ -41,6 +41,11 @@ class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (PlayerPrefs.GetInt("hasPurchased", 0) == 0)
+            hasPurchased = false;
+        else if (PlayerPrefs.GetInt("hasPurchased", 0) == 1)
+            hasPurchased = true;
     }
 
     void Start()
@@ -53,11 +58,6 @@ class GameManager : MonoBehaviour
         {
             isLeftHanded = false;
         }
-
-        if (PlayerPrefs.GetInt("hasPurchased", 0) == 0)
-            hasPurchased = false;
-        else if (PlayerPrefs.GetInt("hasPurchased", 0) == 1)
-            hasPurchased = true;
     }
 
     void Update()

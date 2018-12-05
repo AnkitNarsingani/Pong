@@ -134,27 +134,20 @@ public class Purchaser : MonoBehaviour, IStoreListener
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
     {
-        // A consumable product has been purchased by this user.
         if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
         }
-        // Or ... a non-consumable product has been purchased by this user.
         else if (String.Equals(args.purchasedProduct.definition.id, REMOVE_ADS, StringComparison.Ordinal))
         {
             PlayerPrefs.SetInt("hasPurchased", 1);
             GameManager.Instance.hasPurchased = true;
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
         }
-        // Or ... a subscription product has been purchased by this user.
         else if (String.Equals(args.purchasedProduct.definition.id, kProductIDSubscription, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            // TODO: The subscription item has been successfully purchased, grant this to the player.
         }
-        // Or ... an unknown product has been purchased by this user. Fill in additional products here....
         else
         {
             Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
