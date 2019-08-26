@@ -247,7 +247,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/HOME/Desktop/pongkey.keystore
+  AndroidKeystoreName: C:/Users/HOME/Downloads/Pong!.keystore
   AndroidKeyaliasName: pong!
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -264,7 +264,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d7b86dbbc73908e45bcfcba74ce3e0b7, type: 3}
+      m_Icon: {fileID: 2800000, guid: 2d04d7bc5f0534045ae19b6ee7ff387c, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

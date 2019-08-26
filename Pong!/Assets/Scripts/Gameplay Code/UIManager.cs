@@ -104,6 +104,7 @@ public class UIManager : MonoBehaviour
         isGreyScale = !isGreyScale;
         if (isGreyScale)
         {
+            Time.timeScale = 0.5f;
             main.GetComponent<Grayscale>().enabled = true;
             main.backgroundColor = loseColorCamera;
             GameManager.Instance.player.GetComponent<SpriteRenderer>().color = loseColorPlayer;
@@ -117,6 +118,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 1;
             main.GetComponent<Grayscale>().enabled = false;
             main.backgroundColor = defaultColorCamera;
             GameManager.Instance.player.GetComponent<SpriteRenderer>().color = GameManager.Instance.firstColor;
@@ -189,7 +191,6 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.rally = 0;
             gameOverUI.SetActive(true);
             AudioManager.Instance.Play("Gamelose");
-            AdManager.Instance.ShowRewardedVideoAds();
 
         }
         else
@@ -246,7 +247,6 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.shouldLoadNextScene = true;
         GameManager.Instance.rally = 0;
-        AdManager.Instance.ShowVideoAds("Main Menu");
     }
 
     public void LevelLoad(int level)

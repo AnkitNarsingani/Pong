@@ -4527,7 +4527,6 @@ MonoBehaviour:
   thirdColor: {r: 0.32352942, g: 0.8928364, b: 1, a: 1}
   isLeftHanded: 1
   shouldLoadNextScene: 0
-  hasPurchased: 0
 --- !u!4 &1962496144
 Transform:
   m_ObjectHideFlags: 0
@@ -4811,6 +4810,7 @@ MonoBehaviour:
   aiScore: 0
   AIText: {fileID: 286518056}
   playerText: {fileID: 1558969180}
+  isLookingForInput: 0
   endless: 0
   winScore: 5
   loseColorCamera: {r: 0.121568635, g: 0.121568635, b: 0.121568635, a: 1}
@@ -4821,7 +4821,7 @@ MonoBehaviour:
   UI:
     serializedVersion: 2
     m_Bits: 32
-  GameLoseBackgroundColor: {r: 1, g: 0.4156863, b: 0.3647059, a: 1}
+  GameLoseBackgroundColor: {r: 1, g: 0.41568628, b: 0.3647059, a: 1}
   GameWinBackgroundColor: {r: 0.9294118, g: 0.7843138, b: 0.09411766, a: 1}
 --- !u!4 &2108478270
 Transform:

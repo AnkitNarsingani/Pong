@@ -29,10 +29,6 @@ public class BasicMovement : MonoBehaviour
 
     void OnTouchDown(Vector3 point)
     {
-        if (UIManager.Instance.endless && Input.touchCount > 0)
-        {
-            AdManager.Instance.ShowVideoAds("Main Menu");
-        }
             
     }
 

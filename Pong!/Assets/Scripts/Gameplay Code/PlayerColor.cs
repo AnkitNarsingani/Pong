@@ -39,10 +39,8 @@ public class PlayerColor : MonoBehaviour
 
     public void OnTouchDown(Vector3 point)
     {
-        if (UIManager.Instance.endless && Input.touchCount > 0)
-            AdManager.Instance.ShowVideoAds("Main Menu");
 
-        if (Time.timeScale != 0)
+        if (Time.timeScale == 1)
         {
             count++;
             switch (count)

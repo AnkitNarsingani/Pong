@@ -140,8 +140,6 @@ public class Purchaser : MonoBehaviour, IStoreListener
         }
         else if (String.Equals(args.purchasedProduct.definition.id, REMOVE_ADS, StringComparison.Ordinal))
         {
-            PlayerPrefs.SetInt("hasPurchased", 1);
-            GameManager.Instance.hasPurchased = true;
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
         }
         else if (String.Equals(args.purchasedProduct.definition.id, kProductIDSubscription, StringComparison.Ordinal))

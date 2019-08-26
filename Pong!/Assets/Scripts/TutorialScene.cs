@@ -106,7 +106,7 @@ public class TutorialScene : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         scoreText.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         scoreText.SetActive(false);
         displayScore = false;
         aiText.rectTransform.localScale = new Vector3(1, 1, 1);
@@ -117,7 +117,7 @@ public class TutorialScene : MonoBehaviour
     IEnumerator WinCondition()
     {
         fivePoint.SetActive(true);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
         fivePoint.SetActive(false);
         PlayerPrefs.SetInt("tutorial", 1);
         UIManager.Instance.LevelLoad("Level 17");

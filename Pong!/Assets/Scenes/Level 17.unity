@@ -4621,13 +4621,13 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724568930}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1368998670}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.86300004, y: 0.27929997}
   m_AnchorMax: {x: 1, y: 0.5193294}
   m_AnchoredPosition: {x: 0, y: 1.1999512}
@@ -4815,7 +4815,6 @@ MonoBehaviour:
   thirdColor: {r: 0.9294118, g: 0.7843138, b: 0.09411766, a: 1}
   isLeftHanded: 1
   shouldLoadNextScene: 0
-  hasPurchased: 0
 --- !u!4 &1962496144
 Transform:
   m_ObjectHideFlags: 0

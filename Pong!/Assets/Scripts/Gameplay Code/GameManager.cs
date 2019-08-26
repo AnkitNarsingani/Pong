@@ -28,8 +28,6 @@ class GameManager : MonoBehaviour
     [HideInInspector]
     public bool shouldLoadNextScene = false;
 
-    public bool hasPurchased = false;
-
     void Awake()
     {
         if (Instance == null)
@@ -41,11 +39,6 @@ class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if (PlayerPrefs.GetInt("hasPurchased", 0) == 0)
-            hasPurchased = false;
-        else if (PlayerPrefs.GetInt("hasPurchased", 0) == 1)
-            hasPurchased = true;
     }
 
     void Start()
