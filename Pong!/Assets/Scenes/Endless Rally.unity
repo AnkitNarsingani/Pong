@@ -1799,7 +1799,6 @@ MonoBehaviour:
   thirdColor: {r: 1, g: 0.4156863, b: 0.3647059, a: 1}
   isLeftHanded: 1
   shouldLoadNextScene: 0
-  hasPurchased: 0
 --- !u!4 &1962496144
 Transform:
   m_ObjectHideFlags: 0
@@ -1941,8 +1940,8 @@ MonoBehaviour:
   winScore: 0
   loseColorCamera: {r: 0, g: 0, b: 0, a: 0}
   loseColorPlayer: {r: 0, g: 0, b: 0, a: 0}
-  paddleLeft: {fileID: 0}
-  paddleRight: {fileID: 0}
+  paddleLeft: {fileID: 716425378}
+  paddleRight: {fileID: 761613343}
   playerColorScript: {fileID: 0}
   UI:
     serializedVersion: 2

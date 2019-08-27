@@ -221,11 +221,14 @@ public class MenuManager : MonoBehaviour
 
     public void OnTouchPlay()
     {
-        menuUI.SetActive(false);
-        Camera.main.backgroundColor = yellow;
-        startUI.SetActive(true);
-        shouldPlayanim = true;
-        StartCoroutine(ChangeLevel());
+		if(Time.timeSinceLevelLoad > 1)
+		{
+			menuUI.SetActive(false);
+			Camera.main.backgroundColor = yellow;
+			startUI.SetActive(true);
+			shouldPlayanim = true;
+			StartCoroutine(ChangeLevel());
+		}
     }
 
     IEnumerator ChangeLevel()

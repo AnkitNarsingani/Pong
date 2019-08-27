@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (isLookingForInput && Input.touchCount > 0 && timer > 1f)
+        if (isLookingForInput && Input.touchCount > 0 && timer > 0.5f)
         {
             ChangeProfileLost();
             timer = 0f;
@@ -95,6 +95,10 @@ public class UIManager : MonoBehaviour
             var tempcolor = gameOverUI.GetComponent<Text>().color;
             tempcolor.a = Mathf.Lerp(tempcolor.a, 1, Time.deltaTime * 1.2f);
             gameOverUI.GetComponent<Text>().color = tempcolor;
+			paddleLeft.SetActive(false);
+			paddleRight.SetActive(false);
+			if(Input.touchCount > 0)
+				LevelLoad("Main Menu");
         }
             
     }
